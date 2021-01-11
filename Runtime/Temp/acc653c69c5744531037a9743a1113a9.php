@@ -1,0 +1,3 @@
+<?php
+//000000000060a:7:{i:0;a:2:{s:4:"name";s:16:"dacryogogatresia";s:5:"title";s:12:"泪道阻塞";}i:1;a:2:{s:4:"name";s:20:"acute-dacryocystitis";s:5:"title";s:15:"急性泪囊炎";}i:2;a:2:{s:4:"name";s:22:"chronic-dacryocystitis";s:5:"title";s:15:"慢性泪囊炎";}i:3;a:2:{s:4:"name";s:9:"hordeolun";s:5:"title";s:9:"睑腺炎";}i:4;a:2:{s:4:"name";s:11:"blepharitis";s:5:"title";s:9:"睑缘炎";}i:5;a:2:{s:4:"name";s:14:"dacryoadenitis";s:5:"title";s:9:"泪腺炎";}i:6;a:2:{s:4:"name";s:10:"trichiasis";s:5:"title";s:6:"倒睫";}}
+?>

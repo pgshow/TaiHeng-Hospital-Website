@@ -1,0 +1,30 @@
+<div class="zu-page">
+			<div class="bt"><h2>最新文章<span>NEW ATICLES</span></h2></div>
+			<div data-am-widget="list_news" class="am-list-news am-list-news-default am-no-layout">
+  <div class="am-list-news-bd">
+  <ul class="am-list">
+    <volist name="bottom_latest" id="blvo" offset="0" length='6'>
+    <li class="am-g am-list-item-dated">
+          <a href="/{$bottom_latest_name}/a/{$blvo.id}.html" target="_blank" class="am-list-item-hd ">{$blvo.title}</a>
+          <span class="am-list-date"><a href="/{$bottom_latest_name}/a/{$blvo.id}.html" target="_blank">[{$blvo.create_time|date='m-d',###}]</a></span>
+    </li>
+    </volist>
+  </ul>
+  </div>
+
+    </div>
+	<div data-am-widget="list_news" class="am-list-news am-list-news-default am-no-layout">
+  <div class="am-list-news-bd">
+  <ul class="am-list">
+    <volist name="bottom_latest" id="blvo" offset="6" length='6'>
+    <li class="am-g am-list-item-dated">
+          <a href="/{$bottom_latest_name}/a/{$blvo.id}.html" target="_blank" class="am-list-item-hd ">{$blvo.title}</a>
+          <span class="am-list-date"><a href="/{$bottom_latest_name}/a/{$blvo.id}.html" target="_blank">[{$blvo.create_time|date='m-d',###}]</a></span>
+    </li>
+    </volist>
+  </ul>
+    </div>
+
+    </div>
+			
+			</div>

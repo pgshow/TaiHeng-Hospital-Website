@@ -1,0 +1,180 @@
+<!doctype html>
+<html class="no-js">
+<head>
+  <title>{$Category_info.meta_title} - {:C('WEB_SITE_TITLE')}</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="{$Category_info.description}">
+  <meta name="keywords" content="{$Category_info.keywords}">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <link rel="stylesheet" href="__PUBLIC__/Home/css/amazeui.min.css">
+  <link rel="stylesheet" href="__PUBLIC__/Home/css/app.css">
+  <link rel="stylesheet" href="__PUBLIC__/Home/css/all.css">
+</head>
+<body>
+<!--头部开始-->
+<include file="Public:top" />
+<!--头部结束-->
+<!--菜单开始-->
+<include file="Public:menu1" />
+<!--菜单结束-->
+
+<!--轮播开始--->
+<include file="Public:big_slider" />
+<!--轮播结束--->
+
+<!--主体开始-->
+<div class="quanju">
+<div class=min>
+<!--切换开始-->
+<include file="Public:menu2" />
+<!--切换结束-->
+</div>
+ </div> 
+  <hr data-am-widget="divider" style="" class="am-divider am-divider-dotted" />
+<div class="news-quanju">
+	<div class="news-center">
+			<div class="news-center-left">
+             <div class="page-news">
+			 <p>当前位置：{:C('WEB_SITE_TITLE')} > {$Office_info.title} > {$Parent_info.title} > {$Category_info.title}</p>
+             <if condition="($Category_info.wiki_c_banner_status eq 1)">
+                 <div data-am-widget="list_news" class="am-list-news am-list-news-default am-no-layout" style="
+"><img src="{$Category_info.wiki_c_banner|get_cover='path'}" width="605" height="158"></div>
+             <else />
+             
+			  <div data-am-widget="list_news" class="am-list-news am-list-news-default am-no-layout" style="
+">
+			 <div class="am-list-news-bd">
+		   <ul class="am-list">
+            <volist name="recommends" id="rvo1" offset="0" length='4'>
+			<li class="am-g am-list-item-dated">
+				  <a href="{:U('/illness')}/a/{$rvo1.id}.html" target="_blank" class="am-list-item-hd ">{$rvo1.title}</a>
+				  <span class="am-list-date"><a href="{:U('/illness')}/a/{$rvo1.id}.html" target="_parent">[{$rvo1.create_time|date='m-d',###}]</a></span>
+			</li>
+            </volist>
+            
+			</ul>
+			</div>
+
+           </div>
+		   <div data-am-widget="list_news" class="am-list-news am-list-news-default am-no-layout" style="
+">
+			 <div class="am-list-news-bd">
+		   <ul class="am-list">
+           
+            <volist name="recommends" id="rvo1" offset="4" length='4'>
+			<li class="am-g am-list-item-dated">
+				  <a href="{:U('/illness')}/a/{$rvo1.id}.html" target="_blank" class="am-list-item-hd ">{$rvo1.title}</a>
+				  <span class="am-list-date"><a href="{:U('/illness')}/a/{$rvo1.id}.html" target="_blank">[{$rvo1.create_time|date='m-d',###}]</a></span>
+			</li>
+            </volist>
+
+			</ul>
+			</div>
+
+           </div>
+           
+           <include file="Public:article_bottom_menu" />
+           
+           </if>
+			 </div>
+			
+			 <div class="wzlb">
+      <div class="wzlb_1"><img src="__PUBLIC__/Home/i/news/xinwen.png" class="wzimg fl">
+        <p>{$Category_info.title}</p>
+      </div>
+      
+      <volist name="list" id="vo">
+      <div class="list_lb">
+        <div class="list_lb_1"><a href="{:U('/illness')}/a/{$vo.id}.html" target="_blank"><b>{$vo.title}</b></a>
+          <p class="rq">[{$vo.create_time|date='Y-m-d',###}]</p>
+        </div>
+        <div class="list_lb_2">　　{$vo.content|intro=0,125}<a href="{:U('/illness')}/a/{$vo.id}.html" target="_blank">[阅读全文]</a></div>
+        <div class="lb_tag"><span class="lb_tag_1">TAG：</span><a href="{:U('/illness')}/a/{$vo.id}.html" target="_blank" class="lb_tag_2">{$vo.tag}</a> <a href="http://lvt.zoosnet.net/LR/Chatpre.aspx?id=LVT74007147&lng=cn" target="_blank" class="lb_zx">点击咨询</a></div>
+      </div>
+      </volist>
+      
+
+      <div class="hig_30"></div>
+      <div class="pages">
+      <div class="LNextPage">
+      {$page}
+      </div>
+      </div>
+   </div>
+			
+			
+			</div>
+
+<!--右侧开始-->
+<div class="news-center-right">
+
+    <include file="Public:right_disease" />
+    
+    <include file="Public:right_technology" />
+
+    <div class="news-center-right-3">
+        <div class="quan-title"><h1>知名专家<span>SPECIALLISTS</span></h1></div>
+        <div class="left-zm">
+          <div data-am-widget="slider" class="am-slider am-slider-d1 am-no-layout" data-am-slider="{&quot;controlNav&quot;:false}">
+            <div class="am-viewport" style="overflow: hidden; position: relative;">
+            <ul class="am-slides" style="width: 1200%; transition-duration: 0.6s; transform: translate3d(-606px, 0px, 0px);">
+              <li class="clone" aria-hidden="true" style="width: 303px; float: left; display: block;"> <a href="{:U('/specialist')}/a/{$specialist.id}.html" target="_blank"><img src="{$specialist.photo|get_cover='path'}" width="278" height="208" draggable="false"></a>
+                  <div class="am-slider-desc">
+                    <div class="mingren">
+                    <h2 class="am-slider-title">{$specialist.title}<br><span>{$specialist.situation}</span></h2>
+                    </div>
+                    <div class="mingyuyue">
+                    <a href="{:U('/specialist')}/a/{$specialist.id}.html" target="_blank" class="m1">点击详细</a><a href="http://lvt.zoosnet.net/LR/Chatpre.aspx?id=LVT74007147&lng=cn" target="_blank" class="m2">立即预约</a>
+                    </div>
+                  </div>
+              </li>
+              
+            </ul>
+            </div>
+            <ul class="am-direction-nav"><li class="am-nav-prev"><a class="am-prev" href="#"> </a></li><li class="am-nav-next"><a class="am-next" href="#"> </a></li></ul>
+            
+          </div>
+        </div>		
+    </div>
+
+    <include file="Public:right_case" />
+
+    <include file="Public:right_attention" />
+    
+</div>
+<!--右侧结束-->
+	
+	</div>
+
+</div></div>
+<!--主体结束-->
+
+<!--浮动挂件开始--->
+<include file="Public:widget_float" />
+<!--浮动挂件结束--->
+
+<hr data-am-widget="divider" style="" class="am-divider am-divider-dotted am-no-layout">
+<!--footer开始-->
+<include file="Public:footer" />
+<!--footer结束-->
+
+<!--[if lt IE 9]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="__PUBLIC__/Home/js/amazeui.ie8polyfill.min.js"></script>
+<![endif]-->
+
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="__PUBLIC__/Home/js/jquery.min.js"></script>
+<!--<![endif]-->
+<script src="__PUBLIC__/Home/js/amazeui.min.js"></script>
+<script src="__PUBLIC__/Home/js/all.js"></script>
+
+<script>
+//让当前导航高亮
+$("#menuone{$Category_info.menu_no}").css({"background-color":"#7FC9F1","color":"white"});
+</script>
+</body>
+</html>
+<include file="Public:end" />

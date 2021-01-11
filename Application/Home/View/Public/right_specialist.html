@@ -1,0 +1,26 @@
+<div class="news-center-right-3">
+    <div class="quan-title"><h1>知名专家<span>SPECIALLISTS</span></h1></div>
+	<div class="left-zm">
+      <div data-am-widget="slider" class="am-slider am-slider-d1 am-no-layout" data-am-slider="{&quot;controlNav&quot;:false}">
+        <div class="am-viewport" style="overflow: hidden; position: relative;">
+        <ul class="am-slides" style="width: 1200%; transition-duration: 0.6s; transform: translate3d(-606px, 0px, 0px);">
+          <volist name="famous_specialist" id="fsvo">
+          <li class="clone" aria-hidden="true" style="width: 303px; float: left; display: block;"> <a href="{:U('/specialist')}/a/{$fsvo.id}.html" target="_blank"><img src="{$fsvo.photo|get_cover='path'}" width="278" height="208" draggable="false"></a>
+              <div class="am-slider-desc">
+                <div class="mingren">
+                <h2 class="am-slider-title">{$fsvo.title}<br><span>{$fsvo.situation}</span></h2>
+                </div>
+                <div class="mingyuyue">
+                <a href="{:U('/specialist')}/a/{$fsvo.id}.html" target="_blank" class="m1">点击详细</a><a href="http://lvt.zoosnet.net/LR/Chatpre.aspx?id=LVT74007147&lng=cn" target="_blank" class="m2">立即预约</a>
+                </div>
+              </div>
+          </li>
+          </volist>
+          
+        </ul>
+        </div>
+        <ul class="am-direction-nav"><li class="am-nav-prev"><a class="am-prev" href="#"> </a></li><li class="am-nav-next"><a class="am-next" href="#"> </a></li></ul>
+        
+      </div>
+	</div>		
+</div>

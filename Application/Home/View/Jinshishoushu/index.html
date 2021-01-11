@@ -1,0 +1,334 @@
+<!doctype html>
+<html class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>{$Category_info.meta_title} - {:C('WEB_SITE_TITLE')}</title>
+  <link rel="stylesheet" href="__PUBLIC__/Home/css/amazeui.min.css">
+  <link rel="stylesheet" href="__PUBLIC__/Home/css/app.css">
+  <link rel="stylesheet" href="__PUBLIC__/Home/css/all.css">
+</head>
+<body>
+<!--头部开始-->
+<include file="Public:top" />
+<!--头部结束-->
+<!--菜单开始-->
+<include file="Public:menu1" />
+<!--菜单结束-->
+
+<!--轮播开始--->
+<include file="Public:big_slider" />
+<!--轮播结束--->
+
+ <hr data-am-widget="divider" style="" class="am-divider am-divider-dotted" />
+<div class="quanju">
+<div class=min>
+<!--切换开始-->
+<include file="Public:menu2" />
+<!--切换结束-->
+  <hr data-am-widget="divider" style="" class="am-divider am-divider-dotted" />
+<div class="hosjj">
+   <div class="hos-1">
+   <h2>医院简介</h2>
+    <div class="left-list">
+      <img src="__PUBLIC__/Home/i/tabs/1.jpg">
+	   <p>       重庆泰恒眼科医院是重庆首家大型眼科医院，由国家卫生部视光学研究中心担任技术协作单位，由国家卫生部视光学研究中心担任技由国家卫生部视光学研究中心担任技....[<a href="http://www.th023.com/special/brand/" target="_blank" style="color:#28A3E2!important;">详细</a>]</p>
+    </div>
+   </div>
+   <div class="hos-2">
+  <div data-am-widget="slider" class="am-slider am-slider-a1" data-am-slider='{"directionNav":false}' >
+  <ul class="am-slides">
+      <li><a href="{$Category_info.o_side1_url}" target="_blank"><img src="{$Category_info.o_side1|get_cover='path'}" width="323" height="293"></a></li>
+      <li><a href="{$Category_info.o_side2_url}" target="_blank"><img src="{$Category_info.o_side2|get_cover='path'}" width="323" height="293"></a></li>
+      <li><a href="{$Category_info.o_side3_url}" target="_blank"><img src="{$Category_info.o_side3|get_cover='path'}" width="323" height="293"></a></li>
+  </ul>
+</div>
+
+</div>
+   <div class="hos-3">
+   <div class="left-stabs">
+     <ul>
+     <li class="stabs-1">
+       <a href="javascript:void(0)">最新文章</a>
+	 </li>
+	 <li class="stabs-2 select">
+       <a href="javascript:void(0)">院内新闻</a>
+	 </li>
+   </ul>
+<!--neirong-->
+<div class="left-small-list">
+       <div class="left-small-1" style="display: block;">
+      <div data-am-widget="list_news" class="am-list-news am-list-news-default am-no-layout">
+  <div class="am-list-news-bd">
+  <ul class="am-list">
+      <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
+        <div class="am-u-sm-4 am-list-thumb">
+          <a href="{:U('/illness')}/a/{$newest_list[0]['id']}.html" target="_blank">
+            <if condition="($newest_list[0]['cover_id'] neq 0)">
+                <img src="{$newest_list[0]['cover_id']|get_cover='path'}" width="120" height="135">
+            <else />
+                <img src="__PUBLIC__/Home/i/tabs/s1.jpg" width="120" height="135">
+            </if>
+          </a>
+        </div>
+        <div class=" am-u-sm-8 am-list-main">
+            <h3 class="am-list-item-hd"><a href="{:U('/illness')}/a/{$newest_list[0]['id']}.html" target="_blank" class="">{$newest_list[0]['title']}</a></h3>
+
+            <div class="am-list-item-text">{$newest_list[0]['description']|intro=0,45}<a href="{:U('/illness')}/a/{$newest_list[0]['id']}.html" target="_blank">[详细]</a></div>
+
+        </div>
+      </li>  
+    </ul>
+  </div>
+    </div>
+      <div class="am-list-news-bd">
+    <ul class="am-list">
+    <volist name="newest_list" id="nvo" offset="1" length='3'>
+	<li class="am-g am-list-item-dated am-list1">
+          <a href="{:U('/illness')}/a/{$nvo.id}.html" target="_blank" class="am-list-item-hd ">{$nvo.title}</a>
+          <span class="am-list-date"><a href="{:U('/illness')}/a/{$nvo.id}.html" target="_blank">[详细]</a></span>
+    </li>
+    </volist>
+    </ul>
+    </div>
+  
+  </div>
+        
+	   <div class="left-small-2" style="display: none;">
+      <div data-am-widget="list_news" class="am-list-news am-list-news-default am-no-layout">
+  <div class="am-list-news-bd">
+  <ul class="am-list">
+      <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
+        <div class="am-u-sm-4 am-list-thumb">
+          <a href="{:U('/news')}/a/{$news_list[0]['id']}.html" target="_blank" class="">
+            <if condition="($news_list[0]['cover_id'] neq 0)">
+                <img src="{$news_list[0]['cover_id']|get_cover='path'}" width="120" height="135">
+            <else />
+                <img src="__PUBLIC__/Home/i/tabs/s1.jpg" width="120" height="135">
+            </if>
+          </a>
+        </div>
+        <div class=" am-u-sm-8 am-list-main">
+            <h3 class="am-list-item-hd"><a href="{:U('/news')}/a/{$news_list[0]['id']}.html" target="_blank" class="">{$news_list[0]['title']}</a></h3>
+
+            <div class="am-list-item-text">{$news_list[0]['description']|intro=0,45}<a href="{:U('/news')}/a/{$news_list[0]['id']}.html" target="_blank">[详细]</a></div>
+
+        </div>
+      </li>  
+    </ul>
+  </div>
+    </div>
+      <div class="am-list-news-bd">
+    <ul class="am-list">
+    <volist name="news_list" id="nvo" offset="1" length='3'>
+	<li class="am-g am-list-item-dated am-list1">
+          <a href="{:U('/news')}/a/{$nvo.id}.html" target="_blank" class="am-list-item-hd ">{$nvo.title}</a>
+          <span class="am-list-date"><a href="{:U('/news')}/a/{$nvo.id}.html" target="_blank">[详细]</a></span>
+    </li>
+    </volist>
+    </ul>
+    </div>
+  
+  </div>
+  </div>
+
+</div>
+   </div>
+
+</div>
+  <hr data-am-widget="divider" style="" class="am-divider am-divider-dotted" />
+<!--名家开始-->
+<div class="mingjia">
+<div class="mingtitle">
+    <div style="
+    width: 300px;
+    float: left;
+    margin-top: 0px;
+    line-height: 20px;
+    margin-bottom: 10px;
+    margin-right: 40px;
+    position: relative;
+"><h1>知名专家<span>SPECIALLISTS</span></h1></div>
+	<div style="
+    width: 620px;
+    float: left;
+    margin-top: 0px;
+    line-height: 20px;
+    margin-bottom: 10px;
+    /* position: relative; */
+"><h1>推荐设备<span>HOT TOPICS</span></h1></div>
+</div>
+<div class="left-zm">
+  <div class="am-slider-d1">
+  <ul class="am-slides">
+      <li>
+          <a href="{:U('/specialist')}/a/{$specialist.id}.html" target="_blank"><img src="{$specialist.photo|get_cover='path'}" width="278" height="208"></a>
+          <div class="am-slider-desc">
+		    <div class="mingren">
+			<h2 class="am-slider-title">{$specialist.title}</br><span>{$specialist.situation}</span></h2>
+			</div>
+			<div class="mingyuyue">
+			<a href="{:U('/specialist')}/a/{$specialist.id}.html" class="m1" target="_blank">点击详情</a><a href="http://lvt.zoosnet.net/LR/Chatpre.aspx?id=LVT74007147&lng=cn" class="m2" target="_blank">立即预约</a>
+			</div>
+		  </div>
+      </li>     
+  </ul>
+</div>
+
+
+</div>
+<div class="right-sb">
+  <div class="am-slider am-slider-a1">
+      <if condition="$armarium['url'] eq ''">
+      <a href="{:U('/armarium')}/a/{$armarium.id}.html" title="{$armarium.title}" target="_blank">
+      <else />
+      <a href="{$armarium.url}" title="{$armarium.title}" target="_blank">
+      </if>
+      <img src="{$armarium.office_img|get_cover='path'}" width="618" height="254">
+      </a>
+  </div>
+
+
+</div>
+</div>
+
+<!--名家结束-->
+  <hr data-am-widget="divider" style="" class="am-divider am-divider-dotted" />
+  
+<div class="guanggao">
+  <div class="am-slider am-slider-a1">
+      <a href="{$Category_info.office_banner_url}" target="_blank"><img src="{$Category_info.office_banner|get_cover='path'}" width="1000" height="110"></a>
+  </div>
+
+</div>
+<div class="off-bottom">
+		<div class="off-left">
+		<div class="quan-title " ><h1>案例分享<span>SPECIALLISTS</span></h1></div>
+		  <div class="news-center-right-4">
+		   
+		   <div class="left-small-list">
+       <div class="left-small-1" style="display: block;">
+      <div data-am-widget="list_news" class="am-list-news am-list-news-default am-no-layout">
+  <div class="am-list-news-bd">
+  <ul class="am-list">
+      <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left" style="border-top: none;padding: 10px 0 10px 0;">
+        <div class="am-u-sm-4 am-list-thumb">
+          <a href="{:U('/news')}/a/{$case_list[0]['id']}.html" target="_blank" class="">
+            <if condition="($case_list[0]['cover_id'] neq 0)">
+                <img src="{$case_list[0]['cover_id']|get_cover='path'}" width="120" height="135">
+            <else />
+                <img src="__PUBLIC__/Home/i/news/anlitu.png" width="120" height="135">
+            </if>
+          </a>
+        </div>
+        <div class=" am-u-sm-8 am-list-main">
+            <h3 class="am-list-item-hd"><a href="{:U('/news')}/a/{$case_list[0]['id']}.html" target="_blank" class="">{$case_list[0]['title']}</a></h3>
+
+            <div class="am-list-item-text">{$case_list[0]['description']|intro=0,45}<a href="{:U('/news')}/a/{$case_list[0]['id']}.html" target="_blank">[详细]</a></div>
+
+        </div>
+      </li>  
+    </ul>
+  </div>
+
+    </div>
+      <div class="am-list-news-bd">
+  <ul class="am-list">
+    <volist name="case_list" id="cvo" offset="1" length='3'>
+	<li class="am-g am-list-item-dated am-list1">
+          <a href="{:U('/news')}/a/{$cvo.id}.html" target="_blank" class="am-list-item-hd ">{$cvo.title}</a>
+          <span class="am-list-date"><a href="{:U('/news')}/a/{$cvo.id}.html" target="_blank">[详细]</a></span>
+    </li>
+    </volist>
+    </ul>
+    </div>
+  
+  </div>
+
+  </div>
+  <div class="quan-title " style="
+    margin-top: 20px;
+    margin-bottom: 0;
+"><h1>挂号提示<span>REGISTERED TIPS</span></h1></div>
+  <hr data-am-widget="divider" style="" class="am-divider am-divider-dotted am-no-layout">
+  
+<include file="Public:right_attention" />
+		 
+		 </div>
+		</div>
+		<div class="quan-title " style="width: 662px;float: right;"><h1>{$Category_info.title}<span>{$Category_info.eng_title1}</span></h1></div>
+		<div class="off-right">
+        <div class="off-c">
+        
+        
+        <volist name="categorys" id="clvo1" mod="2">
+		   <div class="
+           <?php
+             //除以2余数为0则为一行的最后个分类
+             if(0 == (($key+1)%2)) {
+             echo "off-2";
+             } else {
+             echo "off-1";
+             }
+           ?>
+           ">
+           
+		   <a href="\{$Office_info.name}\{$clvo1.name}\"><img src="{$clvo1.icon|get_cover='path'}" width="300" height="131"></a>
+		   <h2><a href="\{$Office_info.name}\{$clvo1.name}\">{$clvo1.title}</a></h2>
+		    <div data-am-widget="list_news" class="am-list-news am-list-news-default am-no-layout">
+			 <div class="am-list-news-bd">
+		   <ul class="am-list">
+           
+            <volist name="clvo1.articles" id="clvo2">
+			<li class="am-g am-list-item-dated">
+				  <a href="{:U('/illness')}/a/{$clvo2.id}.html" target="_blank" class="am-list-item-hd ">{$clvo2.title}</a>
+				  <span class="am-list-date"><a href="{:U('/illness')}/a/{$clvo2.id}.html" target="_blank">{$clvo2.create_time|date='m-d',###}</a></span>
+			</li>
+            </volist>
+
+			</ul>
+			</div>
+
+           </div>
+		   </div>
+        </volist>
+           
+		   
+
+
+		</div>
+		</div>
+
+
+</div>
+  <hr data-am-widget="divider" style="" class="am-divider am-divider-dotted" />
+</div>
+</div>
+<!--主体结束-->
+
+<!--浮动挂件开始--->
+<include file="Public:widget_float" />
+<!--浮动挂件结束--->
+
+<!--footer开始-->
+<include file="Public:footer" />
+<!--footer结束-->
+
+<!--[if lt IE 9]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="__PUBLIC__/Home/js/amazeui.ie8polyfill.min.js"></script>
+<![endif]-->
+
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="__PUBLIC__/Home/js/jquery.min.js"></script>
+<!--<![endif]-->
+<script src="__PUBLIC__/Home/js/amazeui.min.js"></script>
+<script src="__PUBLIC__/Home/js/all.js"></script>
+
+</body>
+</html>
+<include file="Public:end" />

@@ -1,0 +1,3 @@
+<?php
+//000000000060a:7:{i:0;a:2:{s:4:"name";s:20:"diabetic-retinopathy";s:5:"title";s:24:"糖尿病视网膜病变";}i:1;a:2:{s:4:"name";s:20:"macular-degeneration";s:5:"title";s:12:"黄斑变性";}i:2;a:2:{s:4:"name";s:18:"retinal-detachment";s:5:"title";s:16:"视网膜脱离 ";}i:3;a:2:{s:4:"name";s:7:"uveitis";s:5:"title";s:12:"葡萄膜炎";}i:4;a:2:{s:4:"name";s:13:"ocular-trauma";s:5:"title";s:9:"眼外伤";}i:5;a:2:{s:4:"name";s:19:"vitreous-hemorrhage";s:5:"title";s:15:"玻璃体积血";}i:6;a:2:{s:4:"name";s:8:"floaters";s:5:"title";s:9:"飞蚊症";}}
+?>

@@ -1,0 +1,3 @@
+<?php
+//000000000060a:8:{i:0;a:2:{s:4:"name";s:18:"baineizhangshoushu";s:5:"title";s:9:"白内障";}i:1;a:2:{s:4:"name";s:15:"senile-cataract";s:5:"title";s:18:"老年性白内障";}i:2;a:2:{s:4:"name";s:19:"congenital-cataract";s:5:"title";s:18:"先天性白内障";}i:3;a:2:{s:4:"name";s:18:"traumatic-cataract";s:5:"title";s:18:"外伤性白内障";}i:4;a:2:{s:4:"name";s:17:"diabetic-cataract";s:5:"title";s:21:"糖尿病性白内障";}i:5;a:2:{s:4:"name";s:20:"complicated-cataract";s:5:"title";s:18:"并发性白内障";}i:6;a:2:{s:4:"name";s:14:"after-cataract";s:5:"title";s:18:"后发性白内障";}i:7;a:2:{s:4:"name";s:5:"dgfdh";s:5:"title";s:21:"其他白内障疾病";}}
+?>

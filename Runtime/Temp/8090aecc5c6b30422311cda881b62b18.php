@@ -1,0 +1,3 @@
+<?php
+//000000000060a:8:{i:0;a:2:{s:4:"name";s:24:"bacterial-conjunctivitis";s:5:"title";s:18:"细菌性结膜炎";}i:1;a:2:{s:4:"name";s:20:"viral-conjunctivitis";s:5:"title";s:18:"病毒性结膜炎";}i:2;a:2:{s:4:"name";s:8:"trochoma";s:5:"title";s:6:"沙眼";}i:3;a:2:{s:4:"name";s:9:"keratitis";s:5:"title";s:9:"角膜炎";}i:4;a:2:{s:4:"name";s:11:"keratoconus";s:5:"title";s:12:"圆锥角膜";}i:5;a:2:{s:4:"name";s:9:"pterygium";s:5:"title";s:12:"翼状胬肉";}i:6;a:2:{s:4:"name";s:9:"scleritis";s:5:"title";s:9:"巩膜炎";}i:7;a:2:{s:4:"name";s:7:"dry-eye";s:5:"title";s:9:"干眼症";}}
+?>

@@ -1,0 +1,45 @@
+      <div class="quan-title " style="
+  margin-top: 20px;
+"><h1>专家答疑<span>ASK-THE-EXPERTS</span></h1></div>
+      <div class="news-center-right-4">
+         
+         <div class="left-small-list">
+     <div class="left-small-1" style="display: block;">
+    <div data-am-widget="list_news" class="am-list-news am-list-news-default am-no-layout">
+<div class="am-list-news-bd">
+<ul class="am-list">
+    <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left" style="border-top: none;padding: 10px 0 10px 0;">
+      <div class="am-u-sm-4 am-list-thumb">
+        <a href="{:U('/news')}/a/{$experts_answer[0]['id']}.html" target="_blank" class="">
+            <if condition="($experts_answer[0]['cover_id'] neq 0)">
+                <img src="{$experts_answer[0]['cover_id']|get_cover='path'}" width="120" height="135">
+            <else />
+                <img src="__PUBLIC__/Home/i/news/anlitu.png" width="120" height="135">
+            </if>
+        </a>
+      </div>
+      <div class=" am-u-sm-8 am-list-main">
+          <h3 class="am-list-item-hd"><a href="{:U('/news')}/a/{$experts_answer[0]['id']}.html" target="_blank" class="">{$experts_answer[0]['title']}</a></h3>
+
+          <div class="am-list-item-text">{$experts_answer[0]['description']|intro=0,45}<a href="{:U('/news')}/a/{$experts_answer[0]['id']}.html" target="_blank">[详细]</a></div>
+
+      </div>
+    </li>  
+  </ul>
+</div>
+
+  </div>
+    <div class="am-list-news-bd">
+<ul class="am-list">
+  <volist name="experts_answer" id="eavo" offset="1" length='3'>
+	<li class="am-g am-list-item-dated am-list1">
+          <a href="{:U('/news')}/a/{$eavo.id}.html" target="_blank" class="am-list-item-hd ">{$eavo.title}</a>
+          <span class="am-list-date"><a href="{:U('/news')}/a/{$eavo.id}.html" target="_blank">[详细]</a></span>
+    </li>
+    </volist>
+  </ul>
+  </div>
+
+</div>
+
+</div>

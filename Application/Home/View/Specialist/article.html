@@ -1,0 +1,180 @@
+<!doctype html>
+<html class="no-js">
+<head>
+  <title>{$Article_info.title} - {:C('WEB_SITE_TITLE')}</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="{$Article_info.description}">
+  <meta name="keywords" content="{$Article_info.keywords}">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <link rel="stylesheet" href="__PUBLIC__/Home/css/amazeui.min.css">
+  <link rel="stylesheet" href="__PUBLIC__/Home/css/app.css">
+  <link rel="stylesheet" href="__PUBLIC__/Home/css/all.css">
+  <style type="text/css">
+  .news-center-right-4{
+    margin-top: 55px;
+	}
+  </style>
+</head>
+<body>
+<!--头部开始-->
+<include file="Public:top" />
+<!--头部结束-->
+<!--菜单开始-->
+<include file="Public:menu1" />
+<!--菜单结束-->
+
+<!--轮播开始--->
+<include file="Public:big_slider" />
+<!--轮播结束--->
+
+<!--主体开始-->
+<div class="quanju">
+<div class=min>
+<!--切换开始-->
+<include file="Public:menu2" />
+<!--切换结束-->
+</div>
+ </div> 
+  <hr data-am-widget="divider" style="" class="am-divider am-divider-dotted" />
+<div class="news-quanju">
+	<div class="news-center">
+			<div class="news-center-left">
+		<!--doctor开始-->
+		<div class="show_wz">
+        	<div class="show_name"><p>{$Article_info.eng_name|strtoupper}</br><span>{$Article_info.title}</span></p></br>
+            </div>
+            <div class="show_wz_1">
+              <div class="show_wz_left fl">
+                <p class="show_wz_top"> <img src="__PUBLIC__/Home/i/doctor/shozj.png"></br>
+                    <span class="show_wz_top_1"> <a href="javascript:void(0);">专家简介</a></br>The Doctor Introduction</span> </p>
+                <p class="show_wz_top_t"> <a href="http://lvt.zoosnet.net/LR/Chatpre.aspx?id=LVT74007147&lng=cn" target="_blank"><img src="__PUBLIC__/Home/i/doctor/shozj_1.png"></a></br>
+                    <span class="show_wz_top_1"> <a href="http://lvt.zoosnet.net/LR/Chatpre.aspx?id=LVT74007147&lng=cn" target="_blank" >立即预约</a></span> </p>
+                <p class="show_wz_top_t"> <a href="http://lvt.zoosnet.net/LR/Chatpre.aspx?id=LVT74007147&lng=cn" target="_blank" ><img src="__PUBLIC__/Home/i/doctor/shouji.png"></a> </p>
+              </div>
+              <div class="show_wz_right fr">
+                  <li>
+	                  <img src="{$Article_info.photo|get_cover='path'}" width="480" height="320" border="0">
+				  </li> 
+			  </div>
+            </div>
+          <div class="show_wz_2">
+              {$Article_info.introduce}
+		  <div>
+	&nbsp;</div>
+   
+          </div>
+          <!--文章内容下的按钮开始-->
+            <style type="text/css">
+           .page-gu{
+			   margin-top:10px;
+			   margin-bottom:10px;
+			}
+           </style>
+		  <include file="Public:article_bottom_menu" />
+		  <!--文章内容下的按钮结束-->
+          <div class="fy" style="
+    margin-top: 0;
+    margin-bottom: 0;
+">
+          	        <if condition="($front neq '')">
+                    <a href="{:U('/specialist')}/a/{$front}.html" class="fr">上一篇</a>
+					</if>
+					<if condition="($after neq '')">
+                    <a href="{:U('/specialist')}/a/{$after}.html" class="fl">下一篇</a>
+					</if>
+          </div>
+    	</div>
+        <!--doctor结束-->		
+	<div class="xgmy">
+      		<p>相关专家<span>ASSOCIATED WITH THE DOCTOR</span></p>
+	   <div class="doctor-img">
+		  <img src="__PUBLIC__/Home/i/doctor/dd.png">
+	   </div>
+	<div class="and_doctor">
+    <ul>
+       <li>
+		 <a href="{:U('/specialist')}/a/{$unite[0]['id']}.html" target="_blank"><img src="{$unite[0]['photo']|get_cover='path'}" border="0" width="135" height="90"  ></a>
+		 <a href="{:U('/specialist')}/a/{$unite[0]['id']}.html" target="_blank">{$unite.0.title}</a>
+       </li>
+       <li style="margin: 0 19px 19px;">
+         <a href="{:U('/specialist')}/a/{$unite[1]['id']}.html" target="_blank"><img src="{$unite[1]['photo']|get_cover='path'}" border="0" width="135" height="90"></a>
+         <a href="{:U('/specialist')}/a/{$unite[1]['id']}.html" target="_blank">{$unite.1.title}</a>
+	   </li>
+       <li style="margin-right: 18px;">
+		 <a href="{:U('/specialist')}/a/{$unite[2]['id']}.html" target="_blank"><img src="{$unite[2]['photo']|get_cover='path'}" border="0" width="135" height="90"></a>
+		 <a href="{:U('/specialist')}/a/{$unite[2]['id']}.html" target="_blank">{$unite.2.title}</a>
+	   </li>
+       <li>
+         <a href="{:U('/specialist')}/a/{$unite[3]['id']}.html" target="_blank"><img src="{$unite[3]['photo']|get_cover='path'}" border="0" width="135" height="90"></a>
+         <a href="{:U('/specialist')}/a/{$unite[3]['id']}.html" target="_blank">{$unite.3.title}</a>
+       </li>
+       <li>
+         <a href="{:U('/specialist')}/a/{$unite[4]['id']}.html" target="_blank"><img src="{$unite[4]['photo']|get_cover='path'}" border="0" width="135" height="90" ></a>
+         <a href="{:U('/specialist')}/a/{$unite[4]['id']}.html" target="_blank">{$unite.4.title}</a>
+       </li>
+       <li style="margin: 0 19px 19px;">
+         <a href="{:U('/specialist')}/a/{$unite[5]['id']}.html" target="_blank"><img src="{$unite[5]['photo']|get_cover='path'}" border="0" width="135" height="90" ></a>
+         <a href="{:U('/specialist')}/a/{$unite[5]['id']}.html" target="_blank">{$unite.5.title}</a>
+       </li>
+	   <li style="margin-right: 18px;">
+         <a href="{:U('/specialist')}/a/{$unite[6]['id']}.html" target="_blank"><img src="{$unite[6]['photo']|get_cover='path'}" border="0" width="135" height="90" ></a>
+         <a href="{:U('/specialist')}/a/{$unite[6]['id']}.html" target="_blank">{$unite.6.title}</a>
+       </li>
+	   <li>
+         <a href="{:U('/specialist')}/a/{$unite[7]['id']}.html" target="_blank"><img src="{$unite[7]['photo']|get_cover='path'}" border="0" width="135" height="90" ></a>
+         <a href="{:U('/specialist')}/a/{$unite[7]['id']}.html" target="_blank">{$unite.7.title}</a>
+       </li>
+    </ul>
+	</div>
+      </div>
+	  </div>
+	
+<!--右侧开始-->
+<div class="news-center-right">
+
+    <include file="Public:right_disease" />
+    
+    <include file="Public:right_technology" />
+
+    <include file="Public:right_case" />
+
+    <include file="Public:right_attention" />
+    
+</div>
+<!--右侧结束-->
+
+</div>
+</div>
+<!--主体结束-->
+
+<!--浮动挂件开始--->
+<include file="Public:widget_float" />
+<!--浮动挂件结束--->
+
+<hr data-am-widget="divider" style="" class="am-divider am-divider-dotted am-no-layout">
+
+<!--footer开始-->
+<include file="Public:footer" />
+<!--footer结束-->
+
+
+<!--[if lt IE 9]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="__PUBLIC__/Home/js/amazeui.ie8polyfill.min.js"></script>
+<![endif]-->
+
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="__PUBLIC__/Home/js/jquery.min.js"></script>
+<!--<![endif]-->
+<script src="__PUBLIC__/Home/js/amazeui.min.js"></script>
+<script src="__PUBLIC__/Home/js/all.js"></script>
+
+<script>
+//让当前导航高亮
+$("#menuone{$Category_info.menu_no}").css({"background-color":"#7FC9F1","color":"white"});
+</script>
+</body>
+</html>
+<include file="Public:end" />

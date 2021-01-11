@@ -1,0 +1,48 @@
+    <div class="qiehuan">
+      <div class="qh">
+        <ul>
+        <volist name="office_menu" id="mvo">
+          <li class=""><a class="qhlist-{$i} qie{$i}a
+          <?php
+          //如果科室序号为空，说明不是科室页，则在让第一个按钮高亮，否则给当前栏目加上标签
+          if ('' == $Office_info['nav_no'] && 1 == $i) {
+              echo 'lanq';
+          }
+          elseif (($i) == $Office_info['nav_no']) {
+              echo 'lanq';
+          }
+          ?>
+          " href="/{$mvo.name}/"><img src="__PUBLIC__/Home/i/tu/b{$i}.png" style="display:none;"></a> </li>
+        </volist>
+        </ul>
+      </div>
+      <div class="rx">
+        <p><img src="__PUBLIC__/Home/i/phone.png"></p>
+        <span>
+        <form action="/s.html" method="get" name="formsearch">
+          <input name="q" type="text" class="fl kuan" value="请输入关键字..." onFocus="this.value=''">
+          <input type="submit" class="an fl" value="搜索" style="
+    line-height: 19px;
+">
+        </form>
+        </span> </div>
+    </div>
+    <div class="qiehuan-page">
+      <volist name="office_menu" id="mvo">
+      <div class="bet 
+      <?php
+      //如果科室序号为空，说明不是科室页，则在让第一个科室的子栏目显示，否则给当前栏目加上标签
+      if ('' == $Office_info['nav_no'] && 1 == ($key+1)) {
+          echo 'lanpage';
+      }
+      elseif (($key+1) == $Office_info['nav_no']) {
+          echo 'lanpage';
+      }
+      ?>
+      " id="bet-{$key+1}" style="display: none;">
+          <volist name="mvo.subs" id="msvo">
+          <a href="/{$mvo.name}/{$msvo.name}/">{$msvo.title}</a>&nbsp;｜&nbsp;
+          </volist>
+      </div>
+      </volist>
+    </div>

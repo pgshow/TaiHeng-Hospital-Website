@@ -1,0 +1,128 @@
+<!doctype html>
+<html class="no-js">
+<head>
+  <title>{$Category_info.meta_title} - {:C('WEB_SITE_TITLE')}</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="{$Category_info.description}">
+  <meta name="keywords" content="{$Category_info.keywords}">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <link rel="stylesheet" href="__PUBLIC__/Home/css/amazeui.min.css">
+  <link rel="stylesheet" href="__PUBLIC__/Home/css/app.css">
+  <link rel="stylesheet" href="__PUBLIC__/Home/css/all.css">
+  <link rel="stylesheet" href="__PUBLIC__/Home/css/luxian.css">
+</head>
+<body>
+<!--头部开始-->
+<include file="Public:top" />
+<!--头部结束-->
+<!--菜单开始-->
+<include file="Public:menu1" />
+<!--菜单结束-->
+
+<!--轮播开始--->
+<include file="Public:big_slider" />
+<!--轮播结束--->
+
+<div class="min">
+    <!--切换开始-->
+    <include file="Public:menu2" />
+    <!--切换结束-->
+</div>
+
+<!--主体开始-->
+<hr data-am-widget="divider" style="" class="am-divider am-divider-dotted am-no-layout">
+<div class="contentt" style="
+    margin-bottom: 40px;
+">
+<div class="one" style="
+    height: 410px;
+">
+<p style="margin-bottom: -7px;">当前位置：{:C('WEB_SITE_TITLE')} > {$Category_info.title}</p>
+<div class="exzj texzj"><div class="exspan-l">{$Category_info.eng_title1}</div> <div class="exspan-2" style="
+    width: 700px;
+">{$Category_info.eng_title2}</div> </div>
+<div class="exzj_1"><div class="exspan_2">{$Category_info.title}</div> <div class="exspan_1">〉〉</div><img src="__PUBLIC__/Home/i/english.png" style="float: left;margin-top: 7px;">
+
+<img src="{$Category_info.icon|get_cover='path'}" style="margin-top: 20px;"></div>
+</div>
+
+
+<div class="zjcon">
+  <volist name="list" id="vo" mod="2">
+  <div class="zjcon_1
+  <eq name="mod" value="0">
+  fl
+  </eq>
+  <eq name="mod" value="1">
+  fr
+  </eq>
+  ">
+      <div class="zjcon_left fl">
+        <a href="{:U('/specialist')}/a/{$vo.id}.html" target="_blank"><img src="{$vo.photo|get_cover='path'}" width="245" height="165"></a><br>
+        <span class="zj_zt"></span> </div>
+      <div class="zjcon_right fl">
+        
+        <h2 class="zjjs_1">{$vo.title}</h2>
+        <span class="zjjs_2"><br>
+        {$vo.intro}</span>
+        <div class="zjcon_zx"><a href="{:U('/specialist')}/a/{$vo.id}.html" target="_blank" class="fl">点击详细</a><a href="http://lvt.zoosnet.net/LR/Chatpre.aspx?id=LVT74007147&lng=cn" target="_blank" class="ljyy fl">立即预约</a></div>
+      </div>
+    </div>
+    
+    <div class="hig_30"></div>
+    
+    </volist>
+
+    <map name="Map" id="Map">
+      <area shape="rect" coords="75,2,180,40" href="/">
+      <area shape="rect" coords="325,1,412,39" href="/">
+      <area shape="rect" coords="567,1,630,39" href="/qyjs/" target="_blank">
+      <area shape="rect" coords="807,2,866,38" href="/zixun/" target="_blank">
+    </map>
+   <hr data-am-widget="divider" style="" class="am-divider am-divider-dotted am-no-layout">
+   <div class="bottom" style="
+    margin-top: -31px;
+">
+<!--文章列表下的按钮开始-->
+<include file="Public:category_bottom_menu" />
+<!--文章列表下的按钮结束-->
+</div>
+    <div class="pages">
+    <div class="LNextPage">
+      {$page}
+    </div>
+    </div>
+  </div>
+</div>
+</div>
+<!--结束开始-->
+<!--主体结束-->
+
+<!--浮动挂件开始--->
+<include file="Public:widget_float" />
+<!--浮动挂件结束--->
+
+<!--footer开始-->
+<include file="Public:footer" />
+<!--footer结束-->
+
+<!--[if lt IE 9]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="__PUBLIC__/Home/js/amazeui.ie8polyfill.min.js"></script>
+<![endif]-->
+
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="__PUBLIC__/Home/js/jquery.min.js"></script>
+<!--<![endif]-->
+<script src="__PUBLIC__/Home/js/amazeui.min.js"></script>
+<script src="__PUBLIC__/Home/js/all.js"></script>
+
+<script>
+//让当前导航高亮
+$("#menuone{$Category_info.menu_no}").css({"background-color":"#7FC9F1","color":"white"});
+</script>
+</body>
+</html>
+<include file="Public:end" />

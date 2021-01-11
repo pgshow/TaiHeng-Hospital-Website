@@ -1,0 +1,147 @@
+<!doctype html>
+<html class="no-js">
+<head>
+  <title>{$Article_info.title} - {:C('WEB_SITE_TITLE')}</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="{$Article_info.description}">
+  <meta name="keywords" content="{$Article_info.keywords}">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <link rel="stylesheet" href="__PUBLIC__/Home/css/amazeui.min.css">
+  <link rel="stylesheet" href="__PUBLIC__/Home/css/app.css">
+  <link rel="stylesheet" href="__PUBLIC__/Home/css/all.css">
+  <style type="text/css">
+  .news-center-right-4{
+    margin-top: 55px;
+	}
+  </style>
+</head>
+<body>
+<!--头部开始-->
+<include file="Public:top" />
+<!--头部结束-->
+<!--菜单开始-->
+<include file="Public:menu1" />
+<!--菜单结束-->
+
+<!--轮播开始--->
+<include file="Public:big_slider" />
+<!--轮播结束--->
+
+<!--主体开始-->
+<div class="quanju">
+<div class=min>
+<!--切换开始-->
+<include file="Public:menu2" />
+<!--切换结束-->
+</div>
+ </div> 
+  <hr data-am-widget="divider" style="" class="am-divider am-divider-dotted" />
+<div class="news-quanju">
+	<div class="news-center">
+			<div class="news-center-left">
+			
+			<div class="wz">
+        	<p class="lbzx_bt">当前位置：{:C('WEB_SITE_TITLE')} ＞ {$Category_info.title}</p>
+            <div class="wzlb_1"><img src="__PUBLIC__/Home/i/news/xinwen.png" class="wzimg fl"><p>{$Category_info.title}</p></div>
+            <!--中间部分开始-->
+          <div class="so_c">
+       	    <p class="so_bt">{$Article_info.title}</p>
+                <div class="so_bt_1"><div>文章来源：www.th023.com</div>  <div>日期：{$Article_info.create_time|date='Y-m-d',###}</div> <div>作者：重庆泰恒眼科医院</div>                          </div>
+				<div class="tqa">
+				<div class="tqa1"><span style="float:left;">分享文章：</span><div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script></div>
+				<div class="tqa1">
+				<div class="suoxiao"><img src="__PUBLIC__/Home/i/page/6.png"></div><div class="fangda"><img src="__PUBLIC__/Home/i/page/7.png"></div><div class="wzdaa">文字大小：</div>
+				</div></div>
+                <div class="hig_30"></div>
+                <div class="so_dd"><p class="dd">导读： <span class="dd_jj">{$Article_info.content|intro=0,120}</span></p></div>
+            <div class="so_nr">
+                {$Article_info.content}
+            </div>
+                <div class="dqdz">本文地址：<a href="http://www.th023.com{:U('/illness')}/a/{$Article_info.id}.html">http://www.th023.com{:U('/illness')}/a/{$Article_info.id}.html</a></div>
+		        <!--文章内容下的按钮开始-->
+		        <include file="Public:article_bottom_menu" />
+				<!--文章内容下的按钮结束-->
+                <div class="fy">
+				    <if condition="($front neq '')">
+                    <a href="{:U('/illness')}/a/{$front}.html" class="fr">上一篇</a>
+					</if>
+					<if condition="($after neq '')">
+                    <a href="{:U('/illness')}/a/{$after}.html" class="fl">下一篇</a>
+					</if>
+                </div>
+          </div>          
+          <!--中间部分结束-->
+        </div>
+			<div class="quan-title" style="margin-top:20px;"><h1>知名专家<span>SPECIALLISTS</span></h1></div>
+			<!--轮播开始-->
+            <include file="Public:bottom_specialist" />		
+			<!--轮播结束-->
+			
+			<!--最新文章开始-->
+			<include file="Public:bottom_latest" />	
+			<!--最新文章结束-->
+			</div>
+	
+<!--右侧开始-->
+<div class="news-center-right">
+	<div data-am-widget="slider" class="am-slider am-slider-a1" data-am-slider='{"directionNav":false}' >
+	  <ul class="am-slides">
+		  <li>
+			  <a href="{$Office_info.o_side1_url}" target="_blank"><img src="{$Office_info.o_side1|get_cover='path'}" width="320" height="290"></a>
+		  </li>
+		  <li>
+			  <a href="{$Office_info.o_side2_url}" target="_blank"><img src="{$Office_info.o_side2|get_cover='path'}" width="320" height="290"></a>
+		  </li>
+		  <li>
+			  <a href="{$Office_info.o_side3_url}" target="_blank"><img src="{$Office_info.o_side3|get_cover='path'}" width="320" height="290"></a>
+		  </li>
+	  </ul>
+	</div>
+
+    <include file="Public:right_disease" />
+    
+    <include file="Public:right_technology" />
+
+    <include file="Public:right_class" />
+
+    <include file="Public:right_attention" />
+    
+</div>
+<!--右侧结束-->
+
+</div>
+</div>
+<!--主体结束-->
+
+<!--浮动挂件开始--->
+<include file="Public:widget_float" />
+<!--浮动挂件结束--->
+
+<hr data-am-widget="divider" style="" class="am-divider am-divider-dotted am-no-layout">
+
+<!--footer开始-->
+<include file="Public:footer" />
+<!--footer结束-->
+
+
+<!--[if lt IE 9]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="__PUBLIC__/Home/js/amazeui.ie8polyfill.min.js"></script>
+<![endif]-->
+
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="__PUBLIC__/Home/js/jquery.min.js"></script>
+<!--<![endif]-->
+<script src="__PUBLIC__/Home/js/amazeui.min.js"></script>
+<script src="__PUBLIC__/Home/js/all.js"></script>
+
+<script>
+//让当前导航高亮
+$("#menuone{$Category_info.menu_no}").css({"background-color":"#7FC9F1","color":"white"});
+</script>
+</body>
+</html>
+<include file="Public:end" />

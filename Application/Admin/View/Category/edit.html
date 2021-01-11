@@ -1,0 +1,924 @@
+<extend name="Public/base"/>
+
+<block name="body">
+	<script type="text/javascript" src="__STATIC__/uploadify/jquery.uploadify.min.js"></script>
+	<div class="main-title">
+		<h2>{:isset($info['id'])?'编辑':'新增'}分类</h2>
+	</div>
+	<div class="tab-wrap">
+		<ul class="tab-nav nav">
+			<li data-tab="tab1" class="current"><a href="javascript:void(0);">基 础</a></li>
+			<li data-tab="tab2"><a href="javascript:void(0);">高 级</a></li>
+            <li data-tab="tab3"><a href="javascript:void(0);">扩 展</a></li>
+		</ul>
+		<div class="tab-content">
+			<form action="{:U()}" method="post" class="form-horizontal">
+				<!-- 基础 -->
+				<div id="tab1" class="tab-pane in tab1">
+					<div class="form-item">
+						<label class="item-label">上级分类<span class="check-tips"></span></label>
+						<div class="controls">
+							<input type="text" class="text input-large" disabled="disabled" value="{$category['title']|default='无'}"/>
+						</div>
+					</div>
+					<div class="form-item">
+						<label class="item-label">
+							分类名称<span class="check-tips">（名称不能为空）</span>
+						</label>
+						<div class="controls">
+							<input type="text" name="title" class="text input-large" value="{$info.title|default=''}">
+						</div>
+					</div>
+					<div class="form-item">
+						<label class="item-label">
+							分类标识<span class="check-tips">（英文字母）</span>
+						</label>
+						<div class="controls">
+							<input type="text" name="name" class="text input-large" value="{$info.name|default=''}">
+						</div>
+					</div>
+                    <div class="form-item">
+						<label class="item-label">
+							英文标题首单词<span class="check-tips">（英文单词）</span>
+						</label>
+						<div class="controls">
+							<input type="text" name="eng_title1" class="text input-large" value="{$info.eng_title1|default=''}">
+						</div>
+					</div>
+                    <div class="form-item">
+						<label class="item-label">
+							英文标题剩余单词<span class="check-tips">（英文单词）</span>
+						</label>
+						<div class="controls">
+							<input type="text" name="eng_title2" class="text input-large" value="{$info.eng_title2|default=''}">
+						</div>
+					</div>
+					<div class="form-item">
+						<label class="item-label">分组定义</label>
+						<div class="controls">
+							<label class="textarea input-large">
+								<textarea name="groups">{$info.groups|default=''}</textarea>
+							</label>
+						</div>
+					</div>
+					<div class="form-item">
+						<label class="item-label">
+							发布内容<span class="check-tips">（是否允许发布内容）</span>
+						</label>
+						<div class="controls">
+							<label class="inline radio"><input type="radio" name="allow_publish" value="0">不允许</label>
+							<label class="inline radio"><input type="radio" name="allow_publish" value="1" checked>仅允许后台</label>
+							<label class="inline radio"><input type="radio" name="allow_publish" value="2" >允许前后台</label>
+						</div>
+					</div>
+					<div class="form-item">
+						<label class="item-label">
+							是否审核<span class="check-tips">（在该分类下发布的内容是否需要审核）</span>
+						</label>
+						<div class="controls">
+							<label class="inline radio"><input type="radio" name="check" value="0" checked>不需要</label>
+							<label class="inline radio"><input type="radio" name="check" value="1">需要</label>
+						</div>
+					</div>
+					<div class="form-item">
+						<label class="item-label">允许文档类型</label>
+						<div class="controls">
+							<volist name=":C('DOCUMENT_MODEL_TYPE')" id="type">
+								<label class="checkbox">
+									<input type="checkbox" name="type[]" value="{$key}">{$type}
+								</label>
+							</volist>
+						</div>
+					</div>
+					<div class="form-item">
+						<label class="item-label">列表绑定文档模型<span class="check-tips">（列表支持发布的文档模型）</span></label>
+						<div class="controls">
+							<volist name=":get_document_model()" id="list">
+								<label class="checkbox">
+									<input type="checkbox" name="model[]" value="{$list.id}">{$list.title}
+								</label>
+							</volist>
+						</div>
+					</div>
+					<div class="form-item">
+						<label class="item-label">子文档绑定绑定模型<span class="check-tips">（子文档支持发布的文档模型）</span></label>
+						<div class="controls">
+							<volist name=":get_document_model()" id="list">
+								<label class="checkbox">
+									<input type="checkbox" name="model_sub[]" value="{$list.id}">{$list.title}
+								</label>
+							</volist>
+						</div>
+					</div>
+					<div class="controls">
+						<label class="item-label">分类图标</label>
+						<input type="file" id="upload_picture">
+						<input type="hidden" name="icon" id="icon" value="{$info['icon']|default=''}"/>
+						<div class="upload-img-box">
+						<notempty name="info['icon']">
+							<div class="upload-pre-item"><img src="{$info.icon|get_cover='path'}"/></div>
+						</notempty>
+						</div>
+					</div>
+					<script type="text/javascript">
+					//上传图片
+				    /* 初始化上传插件 */
+					$("#upload_picture").uploadify({
+				        "height"          : 30,
+				        "swf"             : "__STATIC__/uploadify/uploadify.swf",
+				        "fileObjName"     : "download",
+				        "buttonText"      : "上传图片",
+				        "uploader"        : "{:U('File/uploadPicture',array('session_id'=>session_id()))}",
+				        "width"           : 120,
+				        'removeTimeout'	  : 1,
+				        'fileTypeExts'	  : '*.jpg; *.png; *.gif;',
+				        "onUploadSuccess" : uploadPicture,
+				        'onFallback' : function() {
+				            alert('未检测到兼容版本的Flash.');
+				        }
+				    });
+					function uploadPicture(file, data){
+				    	var data = $.parseJSON(data);
+				    	var src = '';
+				        if(data.status){
+				        	$("#icon").val(data.id);
+				        	src = data.url || '__ROOT__' + data.path;
+				        	$("#icon").parent().find('.upload-img-box').html(
+				        		'<div class="upload-pre-item"><a href="' + src + '" target="_blank"><img src="' + src + '"/></a></div>'
+				        	);
+				        } else {
+				        	updateAlert(data.info);
+				        	setTimeout(function(){
+				                $('#top-alert').find('button').click();
+				                $(that).removeClass('disabled').prop('disabled',false);
+				            },1500);
+				        }
+				    }
+					</script>
+				</div>
+
+				<!-- 高级 -->
+				<div id="tab2" class="tab-pane tab2">
+					<div class="form-item">
+						<label class="item-label">可见性<span class="check-tips">（是否对用户可见，针对前台）</span></label>
+						<div class="controls">
+							<select name="display">
+								<option value="1">所有人可见</option>
+								<option value="0">不可见</option>
+								<option value="2">管理员可见</option>
+							</select>
+						</div>
+					</div>
+                    <div class="form-item">
+						<label class="item-label">导航高亮位置<span class="check-tips">（首页为1，其余从2开始）</span></label>
+						<div class="controls">
+							<select name="menu_no">
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-item">
+						<label class="item-label">
+							排序<span class="check-tips">（仅对当前层级分类有效）</span>
+						</label>
+						<div class="controls">
+							<input type="text" name="sort" class="text input-small" value="{$info.sort|default=0}">
+						</div>
+					</div>
+					<div class="form-item">
+						<label class="item-label">
+							列表行数
+						</label>
+						<div class="controls">
+							<input type="text" name="list_row" class="text input-small" value="{$info.list_row|default=10}">
+						</div>
+					</div>
+
+				</div>
+
+				<!-- 高级 -->
+				<div id="tab2" class="tab-pane tab2">
+					<div class="form-item">
+						<label class="item-label">网页标题</label>
+						<div class="controls">
+							<input type="text" name="meta_title" class="text input-large" value="{$info.meta_title|default=''}">
+						</div>
+					</div>
+					<div class="form-item">
+						<label class="item-label">关键字</label>
+						<div class="controls">
+							<label class="textarea input-large">
+								<textarea name="keywords">{$info.keywords|default=''}</textarea>
+							</label>
+						</div>
+					</div>
+					<div class="form-item">
+						<label class="item-label">描述</label>
+						<div class="controls">
+							<label class="textarea input-large">
+								<textarea name="description">{$info.description|default=''}</textarea>
+							</label>
+						</div>
+					</div>
+					<div class="form-item">
+						<label class="item-label">频道模板</label>
+						<div class="controls">
+							<input type="text" name="template_index" class="text input-large" value="{$info.template_index|default=''}">
+						</div>
+					</div>
+					<div class="form-item">
+						<label class="item-label">列表模板</label>
+						<div class="controls">
+							<input type="text" name="template_lists" class="text input-large" value="{$info.template_lists|default=''}">
+						</div>
+					</div>
+					<div class="form-item">
+						<label class="item-label">详情模板</label>
+						<div class="controls">
+							<input type="text" name="template_detail" class="text input-large" value="{$info.template_detail|default=''}">
+						</div>
+					</div>
+					<div class="form-item">
+						<label class="item-label">编辑模板</label>
+						<div class="controls">
+							<input type="text" name="template_edit" class="text input-large" value="{$info.template_edit|default=''}">
+						</div>
+					</div>
+				</div>
+                
+                <!-- 扩展 -->
+				<div id="tab3" class="tab-pane in tab3">
+					<div class="form-item">
+						<label class="item-label">栏目属性<span class="check-tips">（不同栏目有不同属性）</span></label>
+						<div class="controls">
+							<select name="category_type" id="category_type">
+                                <option value="0">--普通--</option>
+								<option value="1">新闻列表</option>
+								<option value="2">设备文章</option>
+								<option value="3">视频案例</option>
+                                <option value="4">--科室--</option>
+                                <option value="5">--疾病--</option>
+                                <option value="6">--症状--</option>
+							</select>
+						</div>
+					</div>
+				</div>
+                <script type="text/javascript">
+				    jQuery(function(){
+						$("#category_type").val("{$info['category_type']}");
+						hiding("{$info['category_type']}");
+						
+					});
+					$('#category_type').change(function(){
+						var category_type_id = $(this).children('option:selected').val();
+						hiding(category_type_id);
+					})
+					//隐藏和显示对应的属性选项
+					function hiding(category_type_id) {
+						//隐藏除第一个外的所有tab3
+						$(".tab3:eq(1)").hide();
+						$(".tab3:eq(2)").hide();
+						$(".tab3:eq(3)").hide();
+						$(".tab3:eq(4)").hide();
+						$(".tab3:eq(5)").hide();
+						$(".tab3:eq(6)").hide();
+						//显示被选中的那一个
+						$(".tab3:eq("+category_type_id+")").show();
+					}
+				</script>
+                
+                <!-- 新闻列表 -->
+                <div id="tab3" class="tab-pane in tab3" style="display:none">
+					<div class="controls">
+						<label class="item-label">新闻列表栏目图<span class="check-tips">（规格：648×240）</span></label>
+						<input type="file" id="upload_picture_news_banner">
+						<input type="hidden" name="news_banner" id="cover_id_news_banner" value="{$info['news_banner']|default=''}"/>
+						<div class="upload-img-box">
+						<notempty name="info['news_banner']">
+							<div class="upload-pre-item"><img src="{$info.news_banner|get_cover='path'}"/></div>
+						</notempty>
+						</div>
+					</div>
+					<script type="text/javascript">
+					//上传图片
+				    /* 初始化上传插件 */
+					$("#upload_picture_news_banner").uploadify({
+				        "height"          : 30,
+				        "swf"             : "__STATIC__/uploadify/uploadify.swf",
+				        "fileObjName"     : "download",
+				        "buttonText"      : "上传图片",
+				        "uploader"        : "{:U('File/uploadPicture',array('session_id'=>session_id()))}",
+				        "width"           : 120,
+				        'removeTimeout'	  : 1,
+				        'fileTypeExts'	  : '*.jpg; *.png; *.gif;',
+				        "onUploadSuccess" : uploadPicture,
+				        'onFallback' : function() {
+				            alert('未检测到兼容版本的Flash.');
+				        }
+				    });
+					function uploadPicture(file, data){
+				    	var data = $.parseJSON(data);
+				    	var src = '';
+				        if(data.status){
+				        	$("#cover_id_news_banner").val(data.id);
+				        	src = data.url || '__ROOT__' + data.path;
+				        	$("#cover_id_news_banner").parent().find('.upload-img-box').html(
+				        		'<div class="upload-pre-item"><a href="' + src + '" target="_blank"><img src="' + src + '"/></a></div>'
+				        	);
+				        } else {
+				        	updateAlert(data.info);
+				        	setTimeout(function(){
+				                $('#top-alert').find('button').click();
+				                $(that).removeClass('disabled').prop('disabled',false);
+				            },1500);
+				        }
+				    }
+					</script>
+				</div>
+                
+                <!-- 设备文章 -->
+                <div id="tab3" class="tab-pane in tab3" style="display:none">
+					<div class="controls">
+						<label class="item-label">设备幻灯片图片1</label>
+                        <input type="text" name="a_side1_url" class="text input-large" value="{$info.a_side1_url}" placeholder="指向的网址">
+						<input type="file" id="upload_picture_a_side1">
+						<input type="hidden" name="a_side1" id="cover_id_a_side1" value="{$info['a_side1']|default=''}"/>
+						<div class="upload-img-box">
+						<notempty name="info['a_side1']">
+							<div class="upload-pre-item"><img src="{$info.a_side1|get_cover='path'}"/></div>
+						</notempty>
+						</div>
+					</div>
+					<script type="text/javascript">
+					//上传图片
+				    /* 初始化上传插件 */
+					$("#upload_picture_a_side1").uploadify({
+				        "height"          : 30,
+				        "swf"             : "__STATIC__/uploadify/uploadify.swf",
+				        "fileObjName"     : "download",
+				        "buttonText"      : "上传图片",
+				        "uploader"        : "{:U('File/uploadPicture',array('session_id'=>session_id()))}",
+				        "width"           : 120,
+				        'removeTimeout'	  : 1,
+				        'fileTypeExts'	  : '*.jpg; *.png; *.gif;',
+				        "onUploadSuccess" : uploadPicture,
+				        'onFallback' : function() {
+				            alert('未检测到兼容版本的Flash.');
+				        }
+				    });
+					function uploadPicture(file, data){
+				    	var data = $.parseJSON(data);
+				    	var src = '';
+				        if(data.status){
+				        	$("#cover_id_a_side1").val(data.id);
+				        	src = data.url || '__ROOT__' + data.path;
+				        	$("#cover_id_a_side1").parent().find('.upload-img-box').html(
+				        		'<div class="upload-pre-item"><a href="' + src + '" target="_blank"><img src="' + src + '"/></a></div>'
+				        	);
+				        } else {
+				        	updateAlert(data.info);
+				        	setTimeout(function(){
+				                $('#top-alert').find('button').click();
+				                $(that).removeClass('disabled').prop('disabled',false);
+				            },1500);
+				        }
+				    }
+					</script>
+					<div class="controls">
+						<label class="item-label">设备幻灯片图片2</label>
+                        <input type="text" name="a_side2_url" class="text input-large" value="{$info.a_side2_url}" placeholder="指向的网址">
+						<input type="file" id="upload_picture_a_side2">
+						<input type="hidden" name="a_side2" id="cover_id_a_side2" value="{$info['a_side2']|default=''}"/>
+						<div class="upload-img-box">
+						<notempty name="info['a_side2']">
+							<div class="upload-pre-item"><img src="{$info.a_side2|get_cover='path'}"/></div>
+						</notempty>
+						</div>
+					</div>
+					<script type="text/javascript">
+					//上传图片
+				    /* 初始化上传插件 */
+					$("#upload_picture_a_side2").uploadify({
+				        "height"          : 30,
+				        "swf"             : "__STATIC__/uploadify/uploadify.swf",
+				        "fileObjName"     : "download",
+				        "buttonText"      : "上传图片",
+				        "uploader"        : "{:U('File/uploadPicture',array('session_id'=>session_id()))}",
+				        "width"           : 120,
+				        'removeTimeout'	  : 1,
+				        'fileTypeExts'	  : '*.jpg; *.png; *.gif;',
+				        "onUploadSuccess" : uploadPicture,
+				        'onFallback' : function() {
+				            alert('未检测到兼容版本的Flash.');
+				        }
+				    });
+					function uploadPicture(file, data){
+				    	var data = $.parseJSON(data);
+				    	var src = '';
+				        if(data.status){
+				        	$("#cover_id_a_side2").val(data.id);
+				        	src = data.url || '__ROOT__' + data.path;
+				        	$("#cover_id_a_side2").parent().find('.upload-img-box').html(
+				        		'<div class="upload-pre-item"><a href="' + src + '" target="_blank"><img src="' + src + '"/></a></div>'
+				        	);
+				        } else {
+				        	updateAlert(data.info);
+				        	setTimeout(function(){
+				                $('#top-alert').find('button').click();
+				                $(that).removeClass('disabled').prop('disabled',false);
+				            },1500);
+				        }
+				    }
+					</script>
+					<div class="controls">
+						<label class="item-label">设备幻灯片图片3</label>
+                        <input type="text" name="a_side3_url" class="text input-large" value="{$info.a_side3_url}" placeholder="指向的网址">
+						<input type="file" id="upload_picture_a_side3">
+						<input type="hidden" name="a_side3" id="cover_id_a_side3" value="{$info['a_side3']|default=''}"/>
+						<div class="upload-img-box">
+						<notempty name="info['a_side3']">
+							<div class="upload-pre-item"><img src="{$info.a_side3|get_cover='path'}"/></div>
+						</notempty>
+						</div>
+					</div>
+					<script type="text/javascript">
+					//上传图片
+				    /* 初始化上传插件 */
+					$("#upload_picture_a_side3").uploadify({
+				        "height"          : 30,
+				        "swf"             : "__STATIC__/uploadify/uploadify.swf",
+				        "fileObjName"     : "download",
+				        "buttonText"      : "上传图片",
+				        "uploader"        : "{:U('File/uploadPicture',array('session_id'=>session_id()))}",
+				        "width"           : 120,
+				        'removeTimeout'	  : 1,
+				        'fileTypeExts'	  : '*.jpg; *.png; *.gif;',
+				        "onUploadSuccess" : uploadPicture,
+				        'onFallback' : function() {
+				            alert('未检测到兼容版本的Flash.');
+				        }
+				    });
+					function uploadPicture(file, data){
+				    	var data = $.parseJSON(data);
+				    	var src = '';
+				        if(data.status){
+				        	$("#cover_id_a_side3").val(data.id);
+				        	src = data.url || '__ROOT__' + data.path;
+				        	$("#cover_id_a_side3").parent().find('.upload-img-box').html(
+				        		'<div class="upload-pre-item"><a href="' + src + '" target="_blank"><img src="' + src + '"/></a></div>'
+				        	);
+				        } else {
+				        	updateAlert(data.info);
+				        	setTimeout(function(){
+				                $('#top-alert').find('button').click();
+				                $(that).removeClass('disabled').prop('disabled',false);
+				            },1500);
+				        }
+				    }
+					</script>
+				</div>
+                
+                <!--视频案例-->
+                <div id="tab3" class="tab-pane in tab3" style="display:none">
+					<div class="controls">
+						<label class="item-label">视频内页底部图</label>
+						<input type="file" id="upload_picture_video_banner">
+						<input type="hidden" name="video_banner" id="cover_id_video_banner" value="{$info['video_banner']|default=''}"/>
+						<div class="upload-img-box">
+						<notempty name="info['video_banner']">
+							<div class="upload-pre-item"><img src="{$info.video_banner|get_cover='path'}"/></div>
+						</notempty>
+						</div>
+					</div>
+					<script type="text/javascript">
+					//上传图片
+				    /* 初始化上传插件 */
+					$("#upload_picture_video_banner").uploadify({
+				        "height"          : 30,
+				        "swf"             : "__STATIC__/uploadify/uploadify.swf",
+				        "fileObjName"     : "download",
+				        "buttonText"      : "上传图片",
+				        "uploader"        : "{:U('File/uploadPicture',array('session_id'=>session_id()))}",
+				        "width"           : 120,
+				        'removeTimeout'	  : 1,
+				        'fileTypeExts'	  : '*.jpg; *.png; *.gif;',
+				        "onUploadSuccess" : uploadPicture,
+				        'onFallback' : function() {
+				            alert('未检测到兼容版本的Flash.');
+				        }
+				    });
+					function uploadPicture(file, data){
+				    	var data = $.parseJSON(data);
+				    	var src = '';
+				        if(data.status){
+				        	$("#cover_id_video_banner").val(data.id);
+				        	src = data.url || '__ROOT__' + data.path;
+				        	$("#cover_id_video_banner").parent().find('.upload-img-box').html(
+				        		'<div class="upload-pre-item"><a href="' + src + '" target="_blank"><img src="' + src + '"/></a></div>'
+				        	);
+				        } else {
+				        	updateAlert(data.info);
+				        	setTimeout(function(){
+				                $('#top-alert').find('button').click();
+				                $(that).removeClass('disabled').prop('disabled',false);
+				            },1500);
+				        }
+				    }
+					</script>
+				</div>
+                
+                <!--疾病科室-->
+                <div id="tab3" class="tab-pane in tab3" style="display:none">
+                    <div class="controls">
+						<label class="item-label">中部横幅</label>
+                        <input type="text" name="office_banner_url" class="text input-large" value="{$info.office_banner_url}" placeholder="指向的网址">
+						<input type="file" id="upload_picture_office_banner">
+						<input type="hidden" name="office_banner" id="cover_id_office_banner" value="{$info['office_banner']|default=''}"/>
+						<div class="upload-img-box">
+						<notempty name="info['office_banner']">
+							<div class="upload-pre-item"><img src="{$info.office_banner|get_cover='path'}"/></div>
+						</notempty>
+						</div>
+					</div>
+					<script type="text/javascript">
+					//上传图片
+				    /* 初始化上传插件 */
+					$("#upload_picture_office_banner").uploadify({
+				        "height"          : 30,
+				        "swf"             : "__STATIC__/uploadify/uploadify.swf",
+				        "fileObjName"     : "download",
+				        "buttonText"      : "上传图片",
+				        "uploader"        : "{:U('File/uploadPicture',array('session_id'=>session_id()))}",
+				        "width"           : 120,
+				        'removeTimeout'	  : 1,
+				        'fileTypeExts'	  : '*.jpg; *.png; *.gif;',
+				        "onUploadSuccess" : uploadPicture,
+				        'onFallback' : function() {
+				            alert('未检测到兼容版本的Flash.');
+				        }
+				    });
+					function uploadPicture(file, data){
+				    	var data = $.parseJSON(data);
+				    	var src = '';
+				        if(data.status){
+				        	$("#cover_id_office_banner").val(data.id);
+				        	src = data.url || '__ROOT__' + data.path;
+				        	$("#cover_id_office_banner").parent().find('.upload-img-box').html(
+				        		'<div class="upload-pre-item"><a href="' + src + '" target="_blank"><img src="' + src + '"/></a></div>'
+				        	);
+				        } else {
+				        	updateAlert(data.info);
+				        	setTimeout(function(){
+				                $('#top-alert').find('button').click();
+				                $(that).removeClass('disabled').prop('disabled',false);
+				            },1500);
+				        }
+				    }
+					</script>
+                    <div class="controls">
+						<label class="item-label">附属疾病栏目横幅</label>
+                        <input type="text" name="illness_banner_url" class="text input-large" value="{$info.illness_banner_url}" placeholder="指向的网址">
+						<input type="file" id="upload_picture_illness_banner">
+						<input type="hidden" name="illness_banner" id="cover_id_illness_banner" value="{$info['illness_banner']|default=''}"/>
+						<div class="upload-img-box">
+						<notempty name="info['illness_banner']">
+							<div class="upload-pre-item"><img src="{$info.illness_banner|get_cover='path'}"/></div>
+						</notempty>
+						</div>
+					</div>
+					<script type="text/javascript">
+					//上传图片
+				    /* 初始化上传插件 */
+					$("#upload_picture_illness_banner").uploadify({
+				        "height"          : 30,
+				        "swf"             : "__STATIC__/uploadify/uploadify.swf",
+				        "fileObjName"     : "download",
+				        "buttonText"      : "上传图片",
+				        "uploader"        : "{:U('File/uploadPicture',array('session_id'=>session_id()))}",
+				        "width"           : 120,
+				        'removeTimeout'	  : 1,
+				        'fileTypeExts'	  : '*.jpg; *.png; *.gif;',
+				        "onUploadSuccess" : uploadPicture,
+				        'onFallback' : function() {
+				            alert('未检测到兼容版本的Flash.');
+				        }
+				    });
+					function uploadPicture(file, data){
+				    	var data = $.parseJSON(data);
+				    	var src = '';
+				        if(data.status){
+				        	$("#cover_id_illness_banner").val(data.id);
+				        	src = data.url || '__ROOT__' + data.path;
+				        	$("#cover_id_illness_banner").parent().find('.upload-img-box').html(
+				        		'<div class="upload-pre-item"><a href="' + src + '" target="_blank"><img src="' + src + '"/></a></div>'
+				        	);
+				        } else {
+				        	updateAlert(data.info);
+				        	setTimeout(function(){
+				                $('#top-alert').find('button').click();
+				                $(that).removeClass('disabled').prop('disabled',false);
+				            },1500);
+				        }
+				    }
+					</script>
+					<div class="controls">
+						<label class="item-label">科室幻灯片图片1</label>
+                        <input type="text" name="o_side1_url" class="text input-large" value="{$info.o_side1_url}" placeholder="指向的网址">
+						<input type="file" id="upload_picture2_o_side1">
+						<input type="hidden" name="o_side1" id="cover_id2_o_side1" value="{$info['o_side1']|default=''}"/>
+						<div class="upload-img-box">
+						<notempty name="info['o_side1']">
+							<div class="upload-pre-item"><img src="{$info.o_side1|get_cover='path'}"/></div>
+						</notempty>
+						</div>
+					</div>
+					<script type="text/javascript">
+					//上传图片
+				    /* 初始化上传插件 */
+					$("#upload_picture2_o_side1").uploadify({
+				        "height"          : 30,
+				        "swf"             : "__STATIC__/uploadify/uploadify.swf",
+				        "fileObjName"     : "download",
+				        "buttonText"      : "上传图片",
+				        "uploader"        : "{:U('File/uploadPicture',array('session_id'=>session_id()))}",
+				        "width"           : 120,
+				        'removeTimeout'	  : 1,
+				        'fileTypeExts'	  : '*.jpg; *.png; *.gif;',
+				        "onUploadSuccess" : uploadPicture,
+				        'onFallback' : function() {
+				            alert('未检测到兼容版本的Flash.');
+				        }
+				    });
+					function uploadPicture(file, data){
+				    	var data = $.parseJSON(data);
+				    	var src = '';
+				        if(data.status){
+				        	$("#cover_id2_o_side1").val(data.id);
+				        	src = data.url || '__ROOT__' + data.path;
+				        	$("#cover_id2_o_side1").parent().find('.upload-img-box').html(
+				        		'<div class="upload-pre-item"><a href="' + src + '" target="_blank"><img src="' + src + '"/></a></div>'
+				        	);
+				        } else {
+				        	updateAlert(data.info);
+				        	setTimeout(function(){
+				                $('#top-alert').find('button').click();
+				                $(that).removeClass('disabled').prop('disabled',false);
+				            },1500);
+				        }
+				    }
+					</script>
+					<div class="controls">
+						<label class="item-label">科室幻灯片图片2</label>
+                        <input type="text" name="o_side2_url" class="text input-large" value="{$info.o_side2_url}" placeholder="指向的网址">
+						<input type="file" id="upload_picture2_o_side2">
+						<input type="hidden" name="o_side2" id="cover_id2_o_side2" value="{$info['o_side2']|default=''}"/>
+						<div class="upload-img-box">
+						<notempty name="info['o_side2']">
+							<div class="upload-pre-item"><img src="{$info.o_side2|get_cover='path'}"/></div>
+						</notempty>
+						</div>
+					</div>
+					<script type="text/javascript">
+					//上传图片
+				    /* 初始化上传插件 */
+					$("#upload_picture2_o_side2").uploadify({
+				        "height"          : 30,
+				        "swf"             : "__STATIC__/uploadify/uploadify.swf",
+				        "fileObjName"     : "download",
+				        "buttonText"      : "上传图片",
+				        "uploader"        : "{:U('File/uploadPicture',array('session_id'=>session_id()))}",
+				        "width"           : 120,
+				        'removeTimeout'	  : 1,
+				        'fileTypeExts'	  : '*.jpg; *.png; *.gif;',
+				        "onUploadSuccess" : uploadPicture,
+				        'onFallback' : function() {
+				            alert('未检测到兼容版本的Flash.');
+				        }
+				    });
+					function uploadPicture(file, data){
+				    	var data = $.parseJSON(data);
+				    	var src = '';
+				        if(data.status){
+				        	$("#cover_id2_o_side2").val(data.id);
+				        	src = data.url || '__ROOT__' + data.path;
+				        	$("#cover_id2_o_side2").parent().find('.upload-img-box').html(
+				        		'<div class="upload-pre-item"><a href="' + src + '" target="_blank"><img src="' + src + '"/></a></div>'
+				        	);
+				        } else {
+				        	updateAlert(data.info);
+				        	setTimeout(function(){
+				                $('#top-alert').find('button').click();
+				                $(that).removeClass('disabled').prop('disabled',false);
+				            },1500);
+				        }
+				    }
+					</script>
+					<div class="controls">
+						<label class="item-label">科室幻灯片图片3</label>
+                        <input type="text" name="o_side3_url" class="text input-large" value="{$info.o_side3_url}" placeholder="指向的网址">
+						<input type="file" id="upload_picture2_o_side3">
+						<input type="hidden" name="o_side3" id="cover_id2_o_side3" value="{$info['o_side3']|default=''}"/>
+						<div class="upload-img-box">
+						<notempty name="info['o_side3']">
+							<div class="upload-pre-item"><img src="{$info.o_side3|get_cover='path'}"/></div>
+						</notempty>
+						</div>
+					</div>
+					<script type="text/javascript">
+					//上传图片
+				    /* 初始化上传插件 */
+					$("#upload_picture2_o_side3").uploadify({
+				        "height"          : 30,
+				        "swf"             : "__STATIC__/uploadify/uploadify.swf",
+				        "fileObjName"     : "download",
+				        "buttonText"      : "上传图片",
+				        "uploader"        : "{:U('File/uploadPicture',array('session_id'=>session_id()))}",
+				        "width"           : 120,
+				        'removeTimeout'	  : 1,
+				        'fileTypeExts'	  : '*.jpg; *.png; *.gif;',
+				        "onUploadSuccess" : uploadPicture,
+				        'onFallback' : function() {
+				            alert('未检测到兼容版本的Flash.');
+				        }
+				    });
+					function uploadPicture(file, data){
+				    	var data = $.parseJSON(data);
+				    	var src = '';
+				        if(data.status){
+				        	$("#cover_id2_o_side3").val(data.id);
+				        	src = data.url || '__ROOT__' + data.path;
+				        	$("#cover_id2_o_side3").parent().find('.upload-img-box').html(
+				        		'<div class="upload-pre-item"><a href="' + src + '" target="_blank"><img src="' + src + '"/></a></div>'
+				        	);
+				        } else {
+				        	updateAlert(data.info);
+				        	setTimeout(function(){
+				                $('#top-alert').find('button').click();
+				                $(that).removeClass('disabled').prop('disabled',false);
+				            },1500);
+				        }
+				    }
+					</script>
+                    <div class="form-item">
+						<label class="item-label">科室疾病专家</label>
+						<div class="controls">
+							<select name="o_specialist_id" id="o_specialist_id">
+                                <option value="0">--未知--</option>
+                                <volist name="specialists" id="sList">
+                                <option value="{$sList.id}"
+                                <if condition="$info['o_specialist_id'] eq $sList['id']"> selected="selected" </if>>{$sList['title']}
+                                </option>
+                                </volist>
+							</select>
+						</div>
+					</div>
+                    <div class="form-item">
+						<label class="item-label">科室疾病设备</label>
+						<div class="controls">
+							<select name="o_armarium_id" id="o_armarium_id">
+                                <option value="0">--未知--</option>
+                                <volist name="armariums" id="aList">
+                                <option value="{$aList.id}"
+                                <if condition="$info['o_armarium_id'] eq $aList['id']"> selected="selected" </if>>{$aList['title']}
+                                </option>
+                                </volist>
+							</select>
+						</div>
+					</div>
+				</div>
+                
+                <!--单疾病页-->
+                <div id="tab3" class="tab-pane in tab3" style="display:none">
+                    <div class="form-item">
+						<label class="item-label">疾病的疾病专家</label>
+						<div class="controls">
+							<select name="i_specialist_id" id="i_specialist_id">
+                                <option value="0">--未知--</option>
+                                <volist name="specialists" id="sList">
+                                <option value="{$sList.id}"
+                                <if condition="$info['i_specialist_id'] eq $sList['id']"> selected="selected" </if>>{$sList['title']}
+                                </option>
+                                </volist>
+							</select>
+						</div>
+					</div>
+				</div>
+
+                <!--症状文章列表页-->
+                <div id="tab3" class="tab-pane in tab3" style="display:none">
+					<div class="form-item">
+						<label class="item-label">
+							TOP处显示</span>
+						</label>
+						<div class="controls">
+                            <label class="inline radio"><input type="radio" name="wiki_c_banner_status" id="status1" value="0"
+                            <if condition="$info['wiki_c_banner_status'] eq 0"> checked="checked" </if>
+                            >使用文章列表</label>
+							<label class="inline radio"><input type="radio" name="wiki_c_banner_status" id="status2" value="1"
+                            <if condition="$info['wiki_c_banner_status'] eq 1"> checked="checked" </if>
+                            >使用Banner</label>
+						</div>					 
+					</div>
+                    <div class="controls" id="wiki_banner">
+						<label class="item-label">Banner图片</label>
+						<input type="file" id="upload_picture_wiki_c_banner">
+						<input type="hidden" name="wiki_c_banner" id="cover_id_wiki_c_banner" value="{$info['wiki_c_banner']|default=''}"/>
+						<div class="upload-img-box">
+						<notempty name="info['wiki_c_banner']">
+							<div class="upload-pre-item"><img src="{$info.wiki_c_banner|get_cover='path'}"/></div>
+						</notempty>
+						</div>
+					</div>
+					<script type="text/javascript">
+					//上传图片
+				    /* 初始化上传插件 */
+					$("#upload_picture_wiki_c_banner").uploadify({
+				        "height"          : 30,
+				        "swf"             : "__STATIC__/uploadify/uploadify.swf",
+				        "fileObjName"     : "download",
+				        "buttonText"      : "上传图片",
+				        "uploader"        : "{:U('File/uploadPicture',array('session_id'=>session_id()))}",
+				        "width"           : 120,
+				        'removeTimeout'	  : 1,
+				        'fileTypeExts'	  : '*.jpg; *.png; *.gif;',
+				        "onUploadSuccess" : uploadPicture,
+				        'onFallback' : function() {
+				            alert('未检测到兼容版本的Flash.');
+				        }
+				    });
+					function uploadPicture(file, data){
+				    	var data = $.parseJSON(data);
+				    	var src = '';
+				        if(data.status){
+				        	$("#cover_id_wiki_c_banner").val(data.id);
+				        	src = data.url || '__ROOT__' + data.path;
+				        	$("#cover_id_wiki_c_banner").parent().find('.upload-img-box').html(
+				        		'<div class="upload-pre-item"><a href="' + src + '" target="_blank"><img src="' + src + '"/></a></div>'
+				        	);
+				        } else {
+				        	updateAlert(data.info);
+				        	setTimeout(function(){
+				                $('#top-alert').find('button').click();
+				                $(that).removeClass('disabled').prop('disabled',false);
+				            },1500);
+				        }
+				    }
+					</script>
+                    <div class="form-item">
+						<label class="item-label">本疾病专家</label>
+						<div class="controls">
+							<select name="w_specialist_id" id="w_specialist_id">
+                                <option value="0">--未知--</option>
+                                <volist name="specialists" id="sList">
+                                <option value="{$sList.id}"
+                                <if condition="$info['w_specialist_id'] eq $sList['id']"> selected="selected" </if>>{$sList['title']}
+                                </option>
+                                </volist>
+							</select>
+						</div>
+					</div>
+				</div>
+
+				<div class="form-item">
+					<input type="hidden" name="id" value="{$info.id|default=''}">
+					<input type="hidden" name="pid" value="{:isset($category['id'])?$category['id']:$info['pid']}">
+					<button type="submit" id="submit" class="btn submit-btn ajax-post" target-form="form-horizontal">确 定</button>
+					<button class="btn btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</block>
+
+<block name="script">
+	<script type="text/javascript">
+		<present name="info.id">
+		Think.setValue("allow_publish", {$info.allow_publish|default=1});
+		Think.setValue("check", {$info.check|default=0});
+		Think.setValue("model[]", {$info.model|json_encode} || [1]);
+		Think.setValue("model_sub[]", {$info.model_sub|json_encode} || [1]);
+		Think.setValue("type[]", {$info.type|json_encode} || [2]);
+		Think.setValue("display", {$info.display|default=1});
+		Think.setValue("reply", {$info.reply|default=0});
+		Think.setValue("reply_model[]", {$info.reply_model|json_encode} || [1]);
+		Think.setValue("menu_no", {$info.menu_no|default=0});
+		</present>
+		$(function(){
+			showTab();
+			$("input[name=reply]").change(function(){
+				var $reply = $(".form-item.reply");
+				parseInt(this.value) ? $reply.show() : $reply.hide();
+			}).filter(":checked").change();
+		});
+		//导航高亮
+		highlight_subnav('{:U('Category/index')}');
+	</script>
+</block>

@@ -1,0 +1,12 @@
+<ul class="list-inline">
+	<volist name="list" id="vo">
+		<li>
+			<a href="{$vo.link}" title="{$vo.title}" <neq name="vo.nofollow" value="1">rel="nofollow"</neq> target="_blank">
+			<eq name="param.type" value="1">
+				{$vo.title}
+				<else/>
+				<img alt="{$vo.title}" width="{$param.width}" height="{$param.height}" src="__ROOT__{$vo.path}"/>
+			</eq> </a>
+		</li>
+	</volist>
+</ul>

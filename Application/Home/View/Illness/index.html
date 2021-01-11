@@ -1,0 +1,218 @@
+<!doctype html>
+<html class="no-js">
+<head>
+  <title>{$Category_info.meta_title} - {:C('WEB_SITE_TITLE')}</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="{$Category_info.description}">
+  <meta name="keywords" content="{$Category_info.keywords}">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <link rel="stylesheet" href="__PUBLIC__/Home/css/amazeui.min.css">
+  <link rel="stylesheet" href="__PUBLIC__/Home/css/app.css">
+  <link rel="stylesheet" href="__PUBLIC__/Home/css/all.css">
+</head>
+<body>
+<!--头部开始-->
+<include file="Public:top" />
+<!--头部结束-->
+<!--菜单开始-->
+<include file="Public:menu1" />
+<!--菜单结束-->
+
+<!--轮播开始--->
+<include file="Public:big_slider" />
+<!--轮播结束--->
+
+<!--主体开始-->
+<div class="quanju">
+<div class=min>
+<!--切换开始-->
+<include file="Public:menu2" />
+<!--切换结束-->
+</div>
+ </div> 
+  <hr data-am-widget="divider" style="" class="am-divider am-divider-dotted" />
+<div class="news-quanju">
+	<div class="news-center">
+			<div class="news-center-left">
+			<div class="illness">
+			<h2>{$Category_info.title}<span>{$Category_info.eng_title1}</span></h2>
+				<div class="hos-1 illness-1">
+					<div class="left-list"> <a href="{:U('/illness')}/i/{$topic_info.id}.html" title="{$topic_info.title}" target="_blank"><img src="{$topic_info.banner|get_cover='path'}" width="296" height="128"></a>
+					   <p><span class="intro">项目简介：</span>{$topic_info.content1|intro=0,80}[<a href="{:U('/illness')}/i/{$topic_info.id}.html" target="_blank">详细</a>]</p>
+			      </div>
+		      </div>
+			
+			    <div class="illness-2">
+				<div class="center-list">
+         <div data-am-widget="list_news" class="am-list-news am-list-news-default am-no-layout">
+  <div class="am-list-news-bd">
+  <ul class="am-list">
+  
+  <volist name="article_list" id="avo">
+	<li class="am-g am-list-item-dated">
+          <a href="{:U('/illness')}/a/{$avo.id}.html" target="_blank" class="am-list-item-hd ">{$avo.title}</a>
+          <span class="am-list-date"><a href="{:U('/illness')}/a/{$avo.id}.html" target="_blank">[{$avo.create_time|date='m-d',###}]</a></span>
+    </li>
+  </volist>
+    
+  </ul>
+	<div style="text-align:center;">
+	<a href="/armarium/" target="_blank"><img src="__PUBLIC__/Home/i/tabs/2.jpg"></a>
+	<a href="http://lvt.zoosnet.net/LR/Chatpre.aspx?id=LVT74007147&lng=cn" target="_blank"><img src="__PUBLIC__/Home/i/tabs/3.jpg"></a>
+	</div>
+    </div>
+
+    </div>
+
+   
+   </div>
+</div>
+</div>
+<div class="guanggao">
+        <!--大图轮播开始-->
+        <style type="text/css">
+		#container { width: 647px; height: 97px; border: 0px solid #333; overflow: hidden; position: relative;}
+        #list { width: 4326px; height: 97px; position: absolute; z-index: 1;}
+        #list img { float: left;}
+        #buttons { position: absolute; height: 10px; width: 100px; z-index: 2; bottom: 20px; left: 250px;}
+        #buttons span { cursor: pointer; float: left; border: 1px solid #fff; width: 10px; height: 10px; border-radius: 50%; background: #333; margin-right: 5px;}
+        #buttons .on {  background: orangered;}
+        .arrow { cursor: pointer; display: none; line-height: 39px; text-align: center; font-size: 36px; font-weight: bold; width: 40px; height: 40px;  position: absolute; z-index: 2; top: 180px; background-color: RGBA(0,0,0,.3); color: #fff;}
+        .arrow:hover { background-color: RGBA(0,0,0,.7);}
+        #container:hover .arrow { display: block;}
+        #prev { left: 20px;}
+        #next { right: 20px;}
+
+    </style>
+
+        <div id="container">
+          <div id="list"><a href="{$Office_info.illness_banner_url}" target="_blank"><img src="{$Office_info.illness_banner|get_cover='path'}" width="648" height="98"></a></div>
+        </div>
+        
+        <!--大图轮播结束--> 
+        
+      
+
+</div>
+<!--广告结束-->			
+		<div class="ill-top">
+        
+        
+          <volist name="categorys" id="clvo1">
+		  <div class="
+          <?php
+             //除以2余数为0则为一行的最后个分类
+             if(0 == (($key+1)%2)) {
+             echo "ill-top-2";
+             } else {
+             echo "ill-top-1";
+             }
+           ?>
+          ">
+			<h1><a href="\{$Office_info.name}\{$clvo1.name}\">{$clvo1.title}</a></h1>
+			<div>
+			<a href="{:U('/illness')}/a/{$clvo1.articles.0.id}.html" target="_blank"><span class="top_article">{$clvo1.articles.0.title}</span></a>
+			<p>
+			
+			{$clvo1.articles.0.content|intro=0,80}[<a href="{:U('/illness')}/a/{$clvo1.articles.0.id}.html" target="_blank">详细</a>]
+			</p>
+			</div>
+			<div class="off-1"><a href="\{$Office_info.name}\{$clvo1.name}\" target="_blank"><img src="{$clvo1.icon|get_cover='path'}" width="290" height="127"></a>
+		    <div data-am-widget="list_news" class="am-list-news am-list-news-default am-no-layout">
+			 <div class="am-list-news-bd">
+		   <ul class="am-list">
+            <volist name="clvo1.articles" id="clvo2" offset="1" length='5'>
+			<li class="am-g am-list-item-dated">
+				  <a href="{:U('/illness')}/a/{$clvo2.id}.html" target="_blank" class="am-list-item-hd ">{$clvo2.title}</a>
+				  <span class="am-list-date"><a href="{:U('/illness')}/a/{$clvo2.id}.html" target="_blank">{$clvo2.create_time|date='m-d',###}</a></span>
+			</li>
+            </volist>
+
+			</ul>
+			</div>
+
+           </div>
+		   </div>
+		  </div>
+          </volist>
+            
+
+			
+		</div>
+
+			
+</div>
+
+<!--右侧开始-->
+<div class="news-center-right">
+
+    <include file="Public:right_disease" />
+    
+    <include file="Public:right_technology" />
+
+    <div class="news-center-right-3">
+        <div class="quan-title"><h1>知名专家<span>SPECIALLISTS</span></h1></div>
+        <div class="left-zm">
+          <div data-am-widget="slider" class="am-slider am-slider-d1 am-no-layout" data-am-slider="{&quot;controlNav&quot;:false}">
+            <div class="am-viewport" style="overflow: hidden; position: relative;">
+            <ul class="am-slides" style="width: 1200%; transition-duration: 0.6s; transform: translate3d(-606px, 0px, 0px);">
+              <li class="clone" aria-hidden="true" style="width: 303px; float: left; display: block;"> <a href="{:U('/specialist')}/a/{$specialist.id}.html" target="_blank"><img src="{$specialist.photo|get_cover='path'}" width="278" height="208" draggable="false"></a>
+                  <div class="am-slider-desc">
+                    <div class="mingren">
+                    <h2 class="am-slider-title">{$specialist.title}<br><span>{$specialist.situation}</span></h2>
+                    </div>
+                    <div class="mingyuyue">
+                    <a href="{:U('/specialist')}/a/{$specialist.id}.html" target="_blank" class="m1">点击详细</a><a href="http://lvt.zoosnet.net/LR/Chatpre.aspx?id=LVT74007147&lng=cn" target="_blank" class="m2">立即预约</a>
+                    </div>
+                  </div>
+              </li>
+              
+            </ul>
+            </div>
+            <ul class="am-direction-nav"><li class="am-nav-prev"><a class="am-prev" href="#"> </a></li><li class="am-nav-next"><a class="am-next" href="#"> </a></li></ul>
+            
+          </div>
+        </div>		
+    </div>
+
+    <include file="Public:right_case" />
+
+    <include file="Public:right_attention" />
+    
+</div>
+<!--右侧结束-->
+	
+	</div>
+
+</div></div>
+<!--主体结束-->
+
+<!--浮动挂件开始--->
+<include file="Public:widget_float" />
+<!--浮动挂件结束--->
+
+<hr data-am-widget="divider" style="" class="am-divider am-divider-dotted am-no-layout">
+<!--footer开始-->
+<include file="Public:footer" />
+<!--footer结束-->
+
+<!--[if lt IE 9]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="__PUBLIC__/Home/js/amazeui.ie8polyfill.min.js"></script>
+<![endif]-->
+
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="__PUBLIC__/Home/js/jquery.min.js"></script>
+<!--<![endif]-->
+<script src="__PUBLIC__/Home/js/amazeui.min.js"></script>
+<script src="__PUBLIC__/Home/js/all.js"></script>
+
+<script>
+//让当前导航高亮
+$("#menuone{$Category_info.menu_no}").css({"background-color":"#7FC9F1","color":"white"});
+</script>
+</body>
+</html>
+<include file="Public:end" />

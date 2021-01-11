@@ -1,0 +1,36 @@
+<div data-am-widget="slider" class="am-slider am-slider-a1 am-slider-page" data-am-slider='{"directionNav":false}' >
+  <ul class="am-slides">
+      <li>
+        	<div class="page30">
+              <ul>
+                <volist name="famous_specialist" id="fsvo" offset="0" length='3'>
+                <li> <a href="{:U('/specialist')}/a/{$fsvo.id}.html" target="_blank"><img src="{$fsvo.photo|get_cover='path'}" width="185" height="122"></a>
+                    <div class="pag-title">
+                    <h1><a href="{:U('/specialist')}/a/{$fsvo.id}.html" target="_blank">{$fsvo.title}</a></h1>
+                    <h2>{$fsvo.situation}</h2>
+                    <a href="{:U('/specialist')}/a/{$fsvo.id}.html" target="_blank">点击详细</a>
+                    <a href="http://lvt.zoosnet.net/LR/Chatpre.aspx?id=LVT74007147&lng=cn" target="_blank">立即预约</a>
+                  </div>
+                </li>
+                </volist>
+              </ul>
+			</div>
+      </li>
+      <li>
+        	<div class="page30">
+              <ul>
+                <volist name="famous_specialist" id="fsvo" offset="3" length='3'>
+                <li> <a href="{:U('/specialist')}/a/{$fsvo.id}.html" target="_blank"><img src="{$fsvo.photo|get_cover='path'}" width="185" height="122"></a>
+                    <div class="pag-title">
+                    <h1><a href="{:U('/specialist')}/a/{$fsvo.id}.html" target="_blank">{$fsvo.title}</a></h1>
+                    <h2>{$fsvo.situation}</h2>
+                    <a href="{:U('/specialist')}/a/{$fsvo.id}.html" target="_blank">点击详细</a>
+                    <a href="http://lvt.zoosnet.net/LR/Chatpre.aspx?id=LVT74007147&lng=cn" target="_blank">立即预约</a>
+                  </div>
+                </li>
+                </volist>
+              </ul>
+			</div>
+      </li>
+  </ul>
+</div>

@@ -1,0 +1,214 @@
+<!doctype html>
+<html class="no-js">
+<head>
+  <title>{$Category_info.meta_title} - {:C('WEB_SITE_TITLE')}</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="{$Category_info.description}">
+  <meta name="keywords" content="{$Category_info.keywords}">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <link rel="stylesheet" href="__PUBLIC__/Home/css/amazeui.min.css">
+  <link rel="stylesheet" href="__PUBLIC__/Home/css/app.css">
+  <link rel="stylesheet" href="__PUBLIC__/Home/css/all.css">
+  <link rel="stylesheet" href="__PUBLIC__/Home/css/luxian.css">
+</head>
+<body>
+<!--头部开始-->
+<include file="Public:top" />
+<!--头部结束-->
+<!--菜单开始-->
+<include file="Public:menu1" />
+<!--菜单结束-->
+
+<!--轮播开始--->
+<include file="Public:big_slider" />
+<!--轮播结束--->
+
+<div class="min">
+    <!--切换开始-->
+    <include file="Public:menu2" />
+    <!--切换结束-->
+</div>
+
+<!--主体开始-->
+<hr data-am-widget="divider" style="" class="am-divider am-divider-dotted am-no-layout">
+<div class="contentt">
+<div class="one" style="
+    height: 410px;
+">
+<p style="margin-bottom: -7px;">当前位置：{:C('WEB_SITE_TITLE')} > {$Category_info.title}</p>
+<div class="exzj texzj"><div class="exspan-l">{$Category_info.eng_title1}</div>  <div class="exspan-2">{$Category_info.eng_title2}</div></div>
+<div class="exzj_1"><div class="exspan_2">{$Category_info.title}</div><div class="exspan_1">〉〉</div><img src="__PUBLIC__/Home/i/english.png" style="float: left;margin-top: 7px;">
+
+<img src="{$Category_info.icon|get_cover='path'}" style="margin-top: 20px;"></div>
+</div>
+<div class="zhuanjiahao-center">
+<div class="zhuanjiahao-title">
+<span>网上挂号大厅</span>
+<span></span>
+
+</div>
+<div class="zhuanjiahao-title-1"><h1>RESERVATIOM</h1><h2>网上预约专家号</h2></div>
+<div class="zhuanjiahao-title-left">
+<img src="__PUBLIC__/Home/i/zhinan/7.png">
+</div>
+<form action="{:U('/yuyue/add')}/" method="get" id="yuyueform">
+<div class="zhuanjiahao-title-right">
+<div>
+ <span class="sihuang">您的姓名：</span><input name="title" type="text" class="sizhongjian" id="title" placeholder="" /><span class="sihong" id="msg1">*(你的信息已加密）</span>
+</div>
+<hr data-am-widget="divider" style="" class="am-divider am-divider-dotted am-no-layout">
+<div>
+ <span class="sihuang">您的电话：</span><input name="tel" type="text" class="sizhongjian" id="tel" placeholder="" /><span class="sihong" id="msg2">*(你的信息已加密）</span>
+
+
+</div>
+<hr data-am-widget="divider" style="" class="am-divider am-divider-dotted am-no-layout">
+<div>
+ <span class="sihuang">您的年龄：</span><input name="age" type="text" class="sizhongjian" id="age" placeholder="" />
+
+
+</div>
+<hr data-am-widget="divider" style="" class="am-divider am-divider-dotted am-no-layout">
+<div>
+ <span class="sihuang">预约时间：</span><input name="appointment_time" type="date" class="sizhongjian" id="appointment_time" />
+
+
+</div>
+<hr data-am-widget="divider" style="" class="am-divider am-divider-dotted am-no-layout">
+<div>
+ <span class="sihuang">预约专家：</span><select name="specialist" id="doc-select-1" required>
+        <option value="无">无</option>
+        <volist name="specialists" id="svo">
+        <option value="{$svo.title}">{$svo.title}</option>
+        </volist>
+      </select>
+
+
+</div>
+<hr data-am-widget="divider" style="" class="am-divider am-divider-dotted am-no-layout">
+<div>
+ <span class="sihuang">病情描述：</span> <textarea name="detail" id="doc-vld-ta-2" minlength="10" maxlength="100"></textarea>
+
+
+</div>
+<hr data-am-widget="divider" style="" class="am-divider am-divider-dotted am-no-layout">
+<div><button style="
+    height: 30px;
+    width: 80px;
+    color: white;margin-right: 20px;
+    background-color: #0171A3;
+    border: 1px solid gainsboro;
+">提交</button><button style="
+    height: 30px;
+    width: 80px;
+    color: white;
+    background-color: #A69257;
+    border: 1px solid gainsboro;
+">重置</button></div>
+</div>
+</form>
+  <hr data-am-widget="divider" style="" class="am-divider am-divider-dashed" />
+
+
+<div class="zhuanjiahao-title-2"><h1>GREEN CHANNEL</h1><h2>预约绿色通道</h2></div>
+<div class="zhuanjiahao-title-left" style="
+    height: 140px;
+">
+<img src="__PUBLIC__/Home/i/zhinan/8.png">
+</div>
+<div class="zhuanjiahao-title-right" style="
+    height: 140px;
+">
+<div style="
+    color: #A69257;    margin: 0;
+    height: 30px;
+">眼健康预约热线：023-68884888       <span style="
+    color: red;margin-left:20px;
+">*</span>（提供疾病咨询、预约就诊服务）</div>
+<div style="
+    color: #A69257;    margin: 0;
+    height: 30px;
+">腾讯QQ预约热线：707897525     <span style="
+    color: red;margin-left:34px;
+">*</span>（提供疾病咨询、预约就诊服务）</div>
+<div style="
+    color: #A69257;    margin: 0;
+    height: 30px;
+">微信公众号预约：cqtide-eye      <span style="
+    color: red;margin-left:46px;
+">*</span>（提供疾病咨询、预约就诊服务）</div>
+
+
+</div>
+</div>
+
+
+
+<div class="bottom" style="
+    margin-top: -103px;
+">
+<!--文章列表下的按钮开始-->
+<include file="Public:category_bottom_menu" />
+<!--文章列表下的按钮结束-->
+</div>
+
+
+
+  </div>
+</div>
+<!--结束开始-->
+<!--主体结束-->
+
+<!--浮动挂件开始--->
+<include file="Public:widget_float" />
+<!--浮动挂件结束--->
+
+<!--footer开始-->
+<include file="Public:footer" />
+<!--footer结束-->
+
+<!--[if lt IE 9]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="__PUBLIC__/Home/js/amazeui.ie8polyfill.min.js"></script>
+<![endif]-->
+
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="__PUBLIC__/Home/js/jquery.min.js"></script>
+<!--<![endif]-->
+<script src="__PUBLIC__/Home/js/amazeui.min.js"></script>
+<script src="__PUBLIC__/Home/js/all.js"></script>
+
+<script>
+//表单验证
+$(document).ready( 
+function() { 
+    $("#yuyueform").submit(function(){ 
+        var title = $("#title").val(); 
+        var tel   = $("#tel").val(); 
+		var result = true;
+
+        if(title == "") 
+        { 
+			$("#msg1").html('姓名不能为空')
+            $("#title").focus(); 
+            result = false; 
+        }
+		
+        if(tel == "") 
+        { 
+            $("#msg2").html('电话号码不能为空')
+            $("#tel").focus(); 
+            result = false; 
+        }
+		
+		return result;
+	}); 
+}); 
+		
+//让当前导航高亮
+$("#menuone{$Category_info.menu_no}").css({"background-color":"#7FC9F1","color":"white"});
+</script>
+</body>
+</html>

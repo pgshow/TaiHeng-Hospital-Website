@@ -1,0 +1,3 @@
+<?php
+//000000000060a:10:{i:0;a:2:{s:4:"name";s:6:"myopic";s:5:"title";s:9:"近视眼";}i:1;a:2:{s:4:"name";s:11:"high-myopic";s:5:"title";s:12:"高度近视";}i:2;a:2:{s:4:"name";s:11:"astigmatism";s:5:"title";s:6:"散光";}i:3;a:2:{s:4:"name";s:9:"hyperopia";s:5:"title";s:9:"远视眼";}i:4;a:2:{s:4:"name";s:8:"dgfdghdf";s:5:"title";s:9:"老视眼";}i:5;a:2:{s:4:"name";s:9:"swiveleye";s:5:"title";s:6:"斜视";}i:6;a:2:{s:4:"name";s:9:"amblyopia";s:5:"title";s:6:"弱视";}i:7;a:2:{s:4:"name";s:9:"optometry";s:5:"title";s:18:"医学验光配镜";}i:8;a:2:{s:4:"name";s:3:"mct";s:5:"title";s:15:"角膜塑形镜";}i:9;a:2:{s:4:"name";s:3:"rgp";s:5:"title";s:24:"硬性透气性接触镜";}}
+?>

@@ -1,0 +1,451 @@
+<!doctype html>
+<html class="no-js">
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>
+      {$Topic_info.title} - {:C('WEB_SITE_TITLE')}
+    </title>
+    <meta name="keywords" content="{$Article_info.keywords}">
+    <meta name="description" content="{$Article_info.description}">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="__PUBLIC__/Home/css/amazeui.min.css">
+    <link rel="stylesheet" href="__PUBLIC__/Home/css/app.css">
+    <link rel="stylesheet" href="__PUBLIC__/Home/css/shouwei.css">
+    <link rel="stylesheet" href="__PUBLIC__/Home/css/all.css">
+    <link rel="stylesheet" href="__PUBLIC__/Home/css/luxian.css">
+    <script type="text/javascript" src="http://www.yumukeji.com/library/jquery-1.11.2.min.js"></script>
+  </head>
+  
+  <body>
+    <!--头部开始-->
+    <include file="Public:top" />
+    <!--头部结束-->
+    <!--菜单开始-->
+    <include file="Public:menu1" />
+    <!--菜单结束-->
+    <!--轮播开始--->
+    <include file="Public:big_slider" />
+    <!--轮播结束--->
+    <!--切换开始-->
+    <div class="min">
+      <!--切换开始-->
+      <include file="Public:menu2" />
+      <!--切换结束-->
+    </div>
+    <!--切换结束-->
+    <!--主体开始-->
+    <hr data-am-widget="divider" style="" class="am-divider am-divider-dotted am-no-layout">
+    <div class="contentt proiectl-center" style="height: auto;">
+      <div class="one">
+        <p style="margin-bottom: -7px;">
+          当前位置：{:C('WEB_SITE_TITLE')} &gt; {$Office_info.title} > {$Illness_info.title} > 疾病简介
+        </p>
+        <div class="exzj texzj">
+          <div class="exspan-l">
+            TAIHENG
+          </div>
+          <div class="exspan-2">
+            ILLNESS INTRO
+          </div>
+        </div>
+        <div class="exzj_1" style="
+        height: auto!important;
+        ">
+          <div class="exspan_2">
+            项目简介
+          </div>
+          <div class="exspan_1">
+            〉〉
+          </div>
+          <img src="__PUBLIC__/Home/i/english.png" style="float: left;margin-top: 7px;">
+        </div>
+<style type="text/css">
+.bgtp {
+    background: url({$Topic_info.banner|get_cover='path'});
+}
+</style>
+        <div class="bgtp">
+          <div>
+            <h1>
+              {$Illness_info.title}
+              <span>
+                {$Illness_info.eng_title1}
+              </span>
+            </h1>
+            <div class="intro_intro">
+              {$Topic_info.banner_text}
+            </div>
+            <div class="bgtptp">
+              <div class="bgtptp-1 bgtptpyin">
+                <a href="http://lvt.zoosnet.net/LR/Chatpre.aspx?id=LVT74007147&lng=cn" target="_blank">
+                  <img src="__PUBLIC__/Home/i/tubiao/11.png">
+                </a>
+              </div>
+              <div class="bgtptp-2 bgtptpyin">
+                <a href="http://lvt.zoosnet.net/LR/Chatpre.aspx?id=LVT74007147&lng=cn" target="_blank">
+                  <img src="__PUBLIC__/Home/i/tubiao/22.png">
+                </a>
+              </div>
+              <div class="bgtptp-3 bgtptpyin">
+                <!-- JiaThis Button BEGIN -->
+                <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt" target="_blank"><img src="__PUBLIC__/Home/i/tubiao/33.png"></a>
+				<script type="text/javascript" src="http://v3.jiathis.com/code_mini/jia.js" charset="utf-8"></script>
+                <!-- JiaThis Button END -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="chi-main inner mt30">
+        <div class="show-obj-l">
+          <div class="project-right">
+            <div>
+              <h1>
+                眼健康咨询热线
+              </h1>
+              <img src="__PUBLIC__/Home/i/p1.png">
+              <h1>
+                更多疾病 More illness
+              </h1>
+              <p>
+                <a href="http://www.th023.com/shilijiaozheng/hyperopia/">
+                  远视眼
+                </a>
+              </p>
+              <p>
+                <a href="http://www.th023.com/shilijiaozheng/astigmatism/">
+                  散 光
+                </a>
+              </p>
+              <p>
+                <a href="http://www.th023.com/shilijiaozheng/swiveleye/">
+                  斜 视
+                </a>
+              </p>
+              <p>
+                <a href="http://www.th023.com/shilijiaozheng/amblyopia/">
+                  弱 视
+                </a>
+              </p>
+              <p>
+                <a href="http://www.th023.com/shilijiaozheng/dgfdghdf/">
+                  老视眼
+                </a>
+              </p>
+            </div>
+          </div>
+          
+          <if condition="($Topic_info.item1 neq '') AND ($Topic_info.content1 neq '') ">
+          <dl class="chi-show-serv-dl item">
+            <dt>
+              <div class="projl-1">
+                <h1><span>{$Topic_info.item1}</span></h1>
+                <img src="__PUBLIC__/Home/i/01.png">
+              </div>
+            </dt>
+            <dd>
+              {$Topic_info.content1}
+            </dd>
+          </dl>
+          </if>
+          
+          
+          <if condition="($Topic_info.item2 neq '') AND ($Topic_info.content2 neq '') ">
+          <dl class="chi-show-serv-dl item">
+            <dt>
+              <div class="projl-1">
+                <h1><span>{$Topic_info.item2}</span></h1>
+                <img src="__PUBLIC__/Home/i/01.png">
+              </div>
+            </dt>
+            <dd>
+              {$Topic_info.content2}
+            </dd>
+          </dl>
+          </if>
+          
+          
+          <if condition="($Topic_info.item3 neq '') AND ($Topic_info.content3 neq '') ">
+          <dl class="chi-show-serv-dl item">
+            <dt>
+              <div class="projl-1">
+                <h1><span>{$Topic_info.item3}</span></h1>
+                <img src="__PUBLIC__/Home/i/01.png">
+              </div>
+            </dt>
+            <dd>
+              {$Topic_info.content3}
+            </dd>
+          </dl>
+          </if>
+          
+          
+          <if condition="($Topic_info.item4 neq '') AND ($Topic_info.content4 neq '') ">
+          <dl class="chi-show-serv-dl item">
+            <dt>
+              <div class="projl-1">
+                <h1><span>{$Topic_info.item4}</span></h1>
+                <img src="__PUBLIC__/Home/i/01.png">
+              </div>
+            </dt>
+            <dd>
+              {$Topic_info.content4}
+            </dd>
+          </dl>
+          </if>
+          
+          
+          <if condition="($Topic_info.item5 neq '') AND ($Topic_info.content5 neq '') ">
+          <dl class="chi-show-serv-dl item">
+            <dt>
+              <div class="projl-1">
+                <h1><span>{$Topic_info.item5}</span></h1>
+                <img src="__PUBLIC__/Home/i/01.png">
+              </div>
+            </dt>
+            <dd>
+              {$Topic_info.content5}
+            </dd>
+          </dl>
+          </if>
+          
+          
+          <if condition="($Topic_info.item6 neq '') AND ($Topic_info.content6 neq '') ">
+          <dl class="chi-show-serv-dl item">
+            <dt>
+              <div class="projl-1">
+                <h1><span>{$Topic_info.item6}</span></h1>
+                <img src="__PUBLIC__/Home/i/01.png">
+              </div>
+            </dt>
+            <dd>
+              {$Topic_info.content6}
+            </dd>
+          </dl>
+          </if>
+          
+          
+          
+          <dl class="chi-show-serv-dl item" id="lookout">
+            <dt>
+              <div class="projl-1">
+                <h1>
+                  <span>
+                    推荐专家
+                  </span>
+                </h1>
+                <img src="__PUBLIC__/Home/i/01.png">
+              </div>
+            </dt>
+            <dd>
+              <div class="chi-pos-zj chi-pos-zj2 mt30" style="
+
+              ">
+                <ul class="chi-pos-zj-ul">
+                
+                <volist name="specialists" id="svo">
+                  <li>
+                    <div class="thumb">
+                      <a href="{:U('/specialist')}/a/{$svo.id}.html" target="_blank">
+                        <img src="{$svo.blank_photo|get_cover='path'}">
+                      </a>
+                    </div>
+                    <div class="name">
+                      {$svo.title}
+                    </div>
+                    <div class="title">
+                        {$svo.honor}
+                    </div>
+                  </li>
+                </volist>
+                  
+                </ul>
+                <div class="clear">
+                </div>
+              </div>
+            </dd>
+          </dl>
+          
+          <if condition="($Topic_info.item7 neq '') AND ($Topic_info.content7 neq '') ">
+          <dl class="chi-show-serv-dl item">
+            <dt>
+              <div class="projl-1">
+                <h1><span>{$Topic_info.item7}</span></h1>
+                <img src="__PUBLIC__/Home/i/01.png">
+              </div>
+            </dt>
+            <dd>
+              {$Topic_info.content7}
+            </dd>
+          </dl>
+          </if>
+          
+          <if condition="($Topic_info.item8 neq '') AND ($Topic_info.content8 neq '') ">
+          <dl class="chi-show-serv-dl item">
+            <dt>
+              <div class="projl-1">
+                <h1><span>{$Topic_info.item8}</span></h1>
+                <img src="__PUBLIC__/Home/i/01.png">
+              </div>
+            </dt>
+            <dd>
+              {$Topic_info.content8}
+            </dd>
+          </dl>
+          </if>
+          
+          <if condition="($Topic_info.item9 neq '') AND ($Topic_info.content9 neq '') ">
+          <dl class="chi-show-serv-dl item">
+            <dt>
+              <div class="projl-1">
+                <h1><span>{$Topic_info.item9}</span></h1>
+                <img src="__PUBLIC__/Home/i/01.png">
+              </div>
+            </dt>
+            <dd>
+              {$Topic_info.content9}
+            </dd>
+          </dl>
+          </if>
+          
+          <if condition="($Topic_info.item10 neq '') AND ($Topic_info.content10 neq '') ">
+          <dl class="chi-show-serv-dl item">
+            <dt>
+              <div class="projl-1">
+                <h1><span>{$Topic_info.item10}</span></h1>
+                <img src="__PUBLIC__/Home/i/01.png">
+              </div>
+            </dt>
+            <dd>
+              {$Topic_info.content10}
+            </dd>
+          </dl>
+          </if>
+          
+          <if condition="($Topic_info.item11 neq '') AND ($Topic_info.content11 neq '') ">
+          <dl class="chi-show-serv-dl item">
+            <dt>
+              <div class="projl-1">
+                <h1><span>{$Topic_info.item11}</span></h1>
+                <img src="__PUBLIC__/Home/i/01.png">
+              </div>
+            </dt>
+            <dd>
+              {$Topic_info.content11}
+            </dd>
+          </dl>
+          </if>
+          
+          <dl class="chi-show-serv-dl item" id="case">
+            <dt>
+              <div class="projl-1">
+                <h1>
+                  <span>
+                    相关文章
+                  </span>
+                </h1>
+                <img src="__PUBLIC__/Home/i/01.png">
+              </div>
+            </dt>
+            <dd>
+              <div class="jbjj-foor">
+                <div data-am-widget="list_news" class="am-list-news am-list-news-default am-no-layout">
+                  <div class="am-list-news-bd">
+                    <ul class="am-list">
+                    
+                    <volist name="bottom_latest" id="blvo" offset="0" length='4'>
+                      <li class="am-g am-list-item-dated">
+                        <a href="/illness/a/{$blvo.id}.html" target="_blank" class="am-list-item-hd ">
+                          {$blvo.title}
+                        </a>
+                        <span class="am-list-date">
+                          <a href="">
+                            [{$blvo.create_time|date='m-d',###}]
+                          </a>
+                        </span>
+                      </li>
+                    </volist>
+                      
+                    </ul>
+                  </div>
+                </div>
+                <div data-am-widget="list_news" class="am-list-news am-list-news-default am-no-layout">
+                  <div class="am-list-news-bd">
+                    <ul class="am-list">
+                      
+                     <volist name="bottom_latest" id="blvo" offset="4" length='4'>
+                      <li class="am-g am-list-item-dated">
+                        <a href="/illness/a/{$blvo.id}.html" target="_blank" class="am-list-item-hd ">
+                          {$blvo.title}
+                        </a>
+                        <span class="am-list-date">
+                          <a href="">
+                            [{$blvo.create_time|date='m-d',###}]
+                          </a>
+                        </span>
+                      </li>
+                    </volist>
+                      
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </dd>
+          </dl>
+          <div class="bottom">
+            <ul>
+              <li>
+                <a href="#">
+                  <img src="__PUBLIC__/Home/i/luxian/b01.jpg">
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <img src="__PUBLIC__/Home/i/luxian/b02.jpg">
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <img src="__PUBLIC__/Home/i/luxian/b03.jpg">
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <img src="__PUBLIC__/Home/i/luxian/b04.jpg">
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--结束开始-->
+    <hr data-am-widget="divider" style="" class="am-divider am-divider-dotted am-no-layout">
+    <!--footer开始-->
+    <!--footer开始-->
+    <include file="Public:footer" />
+    <!--footer结束-->
+    <!--footer结束-->
+    <!--[if lt IE 9]>
+      <script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js">
+      </script>
+      <script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js">
+      </script>
+      <script src="__PUBLIC__/Home/js/amazeui.ie8polyfill.min.js">
+      </script>
+    <![endif]-->
+    <!--[if (gte IE 9)|!(IE)]>
+      <!-->
+      <script src="__PUBLIC__/Home/js/jquery.min.js">
+      </script>
+    <!--<![endif]-->
+    <script src="__PUBLIC__/Home/js/amazeui.min.js">
+    </script>
+    <script src="__PUBLIC__/Home/js/all.js">
+    </script>
+  </body>
+
+</html>
+<include file="Public:end" />

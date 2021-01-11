@@ -1,0 +1,61 @@
+<extend name="Public/base" />
+
+<!-- 子导航 -->
+<block name="sidebar">
+    <include file="sidemenu" />
+</block>
+
+<block name="body">
+	<div class="main-title cf">
+		<h2>
+			清除文档排序 [ <a href="{$Think.cookie.__forward__}">返回列表</a> ]
+		</h2>
+	</div>
+	<div class="sort">
+		<form action="{:U('clear_sort')}" method="post">
+ 			<div class="sort_top">
+                【操作后该栏目可恢复成按创建时间排序】<br /><br />
+				是否清除文档排序，会丢失以前的手动排序数据！
+			</div> 
+			<div class="sort_bottom" style="margin-top:30px;">
+			    <button class="sort_confirm btn submit-btn" type="button">确 定</button>
+				<button class="sort_cancel btn btn-return" type="button" url="{$Think.cookie.__forward__}">返 回</button>
+			</div>
+		</form>
+	</div>
+</block>
+
+<block name="script">
+	<script type="text/javascript">
+		$(function(){
+			//获取排序并提交
+			$('.sort_confirm').click(function(){
+				
+				$.post(
+					$('form').attr('action'),
+					{
+					clear_yes:"1", cate_id:"{:$cate_id}"
+					},
+					function(data){
+						if (data.status) {
+	                        updateAlert(data.info + ' 页面即将自动跳转~','alert-success');
+	                    }else{
+	                        updateAlert(data.info,'alert-success');
+	                    }
+	                    setTimeout(function(){
+	                        if (data.status) {
+	                        	$('.sort_cancel').click();
+	                        }
+	                    },1500);
+					},
+					'json'
+				);
+			});
+
+			//点击取消按钮
+			$('.sort_cancel').click(function(){
+				window.location.href = $(this).attr('url');
+			});
+		})
+	</script>
+</block>

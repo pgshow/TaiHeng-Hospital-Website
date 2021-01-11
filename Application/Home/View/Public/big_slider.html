@@ -1,0 +1,27 @@
+<if condition="C('INDEX_ICON_MENU') eq '0' ">
+<style type="text/css">
+    .silider img{ height:480px;}
+</style>
+</if>
+<div class="silider siliderie">
+  <div data-am-widget="slider" class="am-slider am-slider-a1" data-am-slider='{"directionNav":false, "slideshowSpeed": 5000,"animationSpeed": 800,}' >
+    <!--如果是疾病页，皆调用各自科室的图片-->
+    <if condition="$Office_info['name'] neq '' ">
+    <ul class="am-slides">
+        <li><img src="/Slider/{$Office_info.name}.jpg"></li>
+    </ul>
+    <else />
+    <ul class="am-slides">
+        <if condition="C('BIG_BANNER_1') neq '' ">
+        <li><a href="{:C('URL_BANNER_1')}" target="_blank"><img src="/Slider/{:C('BIG_BANNER_1')}"></a></li>
+        </if>
+        <if condition="C('BIG_BANNER_2') neq '' ">
+        <li><a href="{:C('URL_BANNER_2')}" target="_blank"><img src="/Slider/{:C('BIG_BANNER_2')}"></a></li>
+        </if>
+        <if condition="C('BIG_BANNER_3') neq '' ">
+        <li><a href="{:C('URL_BANNER_3')}" target="_blank"><img src="/Slider/{:C('BIG_BANNER_3')}"></a></li>
+        </if>
+    </ul>
+    </if>
+  </div>
+</div>
